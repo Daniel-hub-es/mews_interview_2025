@@ -1,0 +1,12 @@
+sources:
+  - name: external
+    database: mydatabase
+    schema: public
+    tables:
+      - name: generated_calendar
+        description: "Table containing calendar information"
+        columns:
+          - name: '"Weekday"'
+            description: "Day of the Week"
+          - name: '"Day"'
+            description: "Day of the year"

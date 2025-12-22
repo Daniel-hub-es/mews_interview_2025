@@ -1,0 +1,16 @@
+version: 2
+
+models:
+  - name: rate_popularity
+    description: "This table contains the popularity metrics for different rates, segmented by guest demographics."
+    columns:
+      - name: rate_name
+        description: "The name of the rate."
+      - name: age_group
+        description: "The age group of the guests who booked the rate."
+      - name: gender
+        description: "The gender of the guests who booked the rate."
+      - name: nationality_code
+        description: "The nationality code of the guests who booked the rate."
+      - name: total_reservations
+        description: "The count of bookings for the rate segmented by demographics."

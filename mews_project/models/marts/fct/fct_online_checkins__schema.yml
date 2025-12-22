@@ -1,0 +1,22 @@
+version: 2
+
+models:
+  - name: online_checkins
+    description: "Fact table for online check-ins"
+    columns:
+      - name: created_utc
+        description: "Timestamp when the record was created"
+      - name: created_day
+        description: "Day of the week when the record was created"
+      - name: age_group
+        description: "Age group of the guest"
+      - name: gender
+        description: "Gender of the guest"
+      - name: nationality_code
+        description: "Nationality code of the guest"
+      - name: rate_name
+        description: "Name of the rate plan"
+      - name: total_reservations
+        description: "Total number of reservations"
+      - name: total_online_checkin
+        description: "Total number of online check-ins"

@@ -1,0 +1,26 @@
+version: 2
+
+models:
+  - name: fct_revenue
+    description: "Fact table for revenue data"
+    columns:
+      - name: created_utc
+        description: "Timestamp when the record was created"
+      - name: age_group
+        description: "Age group of the guest"
+      - name: gender
+        description: "Gender of the guest"
+      - name: nationality_code
+        description: "Nationality code of the guest"
+      - name: rate_name
+        description: "Name of the rate applied"
+      - name: night_count
+        description: "Number of nights stayed"
+      - name: night_cost_sum
+        description: "Total cost for all nights stayed"
+      - name: occupied_space_sum
+        description: "Total occupied space (e.g., number of rooms)"
+      - name: guest_count_sum
+        description: "Total number of guests"
+      - name: rev_per_capacity
+        description: "Revenue per available capacity"

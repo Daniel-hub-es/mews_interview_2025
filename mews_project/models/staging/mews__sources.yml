@@ -1,0 +1,82 @@
+version: 2
+
+sources:
+  - name: mews
+    database: mydatabase
+    schema: public
+    tables:
+      - name: reservations
+        description: "Table containing reservation information"
+        columns:
+          - name: '"StartUtc"'
+            description: "UTC start time of the reservation"
+          - name: '"EndUtc"'
+            description: "UTC end time of the reservation"
+          - name: '"CreatedUtc"'
+            description: "UTC time when the reservation was created"
+          - name: '"NighCount"'
+            description: "Number of nights for the reservation"
+          - name: '"NighCost_Sum"'
+            description: "Total cost for the nights of the reservation"
+          - name: '"OccupiedSpace_Sum"'
+            description: "Total occupied space for the reservation"
+          - name: '"GuesCount_Sum"'
+            description: "Total number of guests for the reservation"
+          - name: '"LeadTime"'
+            description: "Lead time for the reservation"
+          - name: '"Staylength"'
+            description: "Length of stay for the reservation"
+          - name: '"CancellationReason"'
+            description: "Reason for cancellation of the reservation"
+          - name: '"SettlementType"'
+            description: "Type of settlement for the reservation"
+          - name: '"ReservationState"'
+            description: "State of the reservation"
+          - name: '"Origin"'
+            description: "Origin of the reservation"
+          - name: '"CommanderOrigin"'
+            description: "Origin of the commander for the reservation"
+          - name: '"TravelAgency"'
+            description: "Travel agency associated with the reservation"
+          - name: '"IsOnlineCCheckin"'
+            description: "Indicates if the check-in was done online"
+          - name: '"NationalityCode"'
+            description: "Nationality code of the guest"
+          - name: '"Gender"'
+            description: "Gender of the guest"
+          - name: '"Classification"'
+            description: "Classification of the reservation"
+          - name: '"AgeGroup"'
+            description: "Age group of the guest"
+          - name: '"HasEmail"'
+            description: "Indicates if the guest has an email"
+          - name: '"EnterpriseTimeZone"'
+            description: "Enterprise time zone for the reservation"
+          - name: '"BusinessSegment"'
+            description: "Business segment of the reservation"
+          - name: '"Tier"'
+            description: "Tier of the reservation"
+          - name: '"RateId"'
+            description: "Rate ID associated with the reservation"
+            data_tests:
+              - not_null
+      - name: rates
+        description: "Table containing property information"
+        columns:
+          - name: '"RateId"'
+            description: "Rate ID associated with the property"
+            data_tests:
+              - not_null
+              - unique
+          - name: '"RateName"'
+            description: "Name of the rate for the property"
+          - name: '"ShortRateName"'
+            description: "Short name of the rate for the property"
+          - name: '"SettlementAction"'
+            description: "Settlement action for the property"
+          - name: '"SettlementTrigger"'
+            description: "Settlement trigger for the property"
+          - name: '"SettlementValue"'
+            description: "Settlement value for the property"
+          - name: '"SettlementType"'
+            description: "Settlement type for the property"

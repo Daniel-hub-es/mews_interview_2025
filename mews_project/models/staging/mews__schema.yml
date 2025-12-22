@@ -1,0 +1,77 @@
+version: 2
+
+models:
+  - name: stg_mews__reservations
+    description: "Staging table for Mews reservations data."
+    columns:
+      - name: start_utc
+        description: "UTC start time of the reservation"
+      - name: end_utc
+        description: "UTC end time of the reservation"
+      - name: created_utc
+        description: "UTC creation time of the reservation"
+      - name: night_count
+        description: "Number of nights for the reservation."
+      - name: night_cost_sum
+        description: "Total cost for the nights of the reservation."
+      - name: occupied_space_sum
+        description: "Total occupied space for the reservation."
+      - name: guest_count_sum
+        description: "Total number of guests for the reservation."
+      - name: lead_time
+        description: "Lead time for the reservation."
+      - name: stay_length
+        description: "Length of stay for the reservation."
+      - name: cancellation_reason
+        description: "Reason for cancellation of the reservation."
+      - name: settlement_type
+        description: "Type of settlement for the reservation."
+      - name: reservation_state
+        description: "State of the reservation."
+      - name: origin
+        description: "Origin of the reservation."
+      - name: commander_origin
+        description: "Origin of the commander for the reservation."
+      - name: travel_agency
+        description: "Travel agency associated with the reservation."
+      - name: is_online_checkin
+        description: "Indicates if the check-in was done online."
+      - name: nationality_code
+        description: "Nationality code of the guest."
+      - name: gender
+        description: "Gender of the guest."
+      - name: classification
+        description: "Classification of the guest."
+      - name: age_group
+        description: "Age group of the guest."
+      - name: has_email
+        description: "Indicates if the guest has provided an email."
+      - name: business_segment
+        description: "Business segment of the guest."
+      - name: tier
+        description: "Tier of the guest."
+      - name: rate_id
+        description: "Rate ID associated with the reservation."
+        data_tests:
+          - not_null
+
+  - name: stg_mews__rates
+    description: "Staging table for Mews rates data."
+    columns:
+      - name: rate_id
+        description: "Rate ID associated with the property."
+        data_tests:
+          - not_null
+          - unique
+      - name: rate_name
+        description: "Name of the rate for the property."
+      - name: short_rate_name
+        description: "Short name of the rate for the property."
+      - name: settlement_action
+        description: "Settlement action for the rate."
+      - name: settlement_trigger
+        description: "Settlement trigger for the rate."
+      - name: settlement_value
+        description: "Settlement value for the rate."
+      - name: settlement_type
+        description: "Settlement type for the rate."
