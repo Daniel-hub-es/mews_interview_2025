@@ -1,14 +1,14 @@
 version: 2
 
 models:
-  - name: calendar
+  - name: dim__calendar
     description: "This table contains a calendar schema with dates and their corresponding weekdays."
     columns:
       - name: Weekday
         description: "The name of the day of the week."
         data_tests:
           - not_null
-      - name: Day
+      - name: dates
         description: "The date in DD/MM/YYYY format."
         data_tests:
           - not_null

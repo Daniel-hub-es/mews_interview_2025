@@ -2,7 +2,7 @@ with
 
     base as (
         select *
-        from  {{ ref('reservations_rates') }}
+        from  {{ ref('int__reservations_rates') }}
     ),
 
     final as (

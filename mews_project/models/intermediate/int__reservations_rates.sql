@@ -2,12 +2,12 @@ with
 
 	rates as (
 		select *
-		from {{ ref('stg_mews__rates') }}
+		from {{ ref('stg__mews_rates') }}
 	),
 
 	reservations as (
 		select *
-		from {{ ref('stg_mews__reservations') }}
+		from {{ ref('stg__mews_reservations') }}
 	),
 
 	reservations_rates as (

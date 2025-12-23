@@ -1,7 +1,7 @@
 version: 2
 
 models:
-  - name: online_checkins
+  - name: fct__online_checkins
     description: "Fact table for online check-ins"
     columns:
       - name: created_utc

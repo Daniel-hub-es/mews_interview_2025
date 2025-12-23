@@ -1,7 +1,7 @@
 version: 2
 
 models:
-  - name: fct_revenue
+  - name: fct__revenue
     description: "Fact table for revenue data"
     columns:
       - name: created_utc

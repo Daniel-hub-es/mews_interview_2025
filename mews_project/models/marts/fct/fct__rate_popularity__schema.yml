@@ -1,7 +1,7 @@
 version: 2
 
 models:
-  - name: rate_popularity
+  - name: fct__rate_popularity
     description: "This table contains the popularity metrics for different rates, segmented by guest demographics."
     columns:
       - name: rate_name

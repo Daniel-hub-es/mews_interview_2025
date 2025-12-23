@@ -1,7 +1,7 @@
 version: 2
 
 models:
-  - name: reservations_rates
+  - name: int__reservations_rates
     description: "This table contains the rates associated with reservations, including details such as rate plans, amounts, and applicable dates."
     columns:
     - name: start_utc
