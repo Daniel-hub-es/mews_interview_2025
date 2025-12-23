@@ -1,0 +1,24 @@
+version: 2
+
+models:
+  - name: fct__checkins_growth
+    description: "Fact table for checkin online growth revenue data"
+    columns:
+      - name: global_total_bookings
+        description: "Total number of bookings"
+      - name: online_checkins
+        description: "Number of online checkins"
+      - name: avg_online_rev
+        description: "Average revenue from online checkins"
+      - name: avg_offline_rev
+        description: "Average revenue from offline checkins"
+      - name: avg_revenue_diff
+        description: "Average revenue difference between online and offline checkins"
+      - name: current_total_revenue
+        description: "Current total revenue from all bookings"
+      - name: online_projected_growth_revenue
+        description: "Projected revenue growth from online checkins" 
+      - name: percentage_revenue_growth
+        description: "Percentage of revenue growth from online checkins"
+      - name: projected_total_revenue
+        description: "Projected total revenue considering online checkin growth"
