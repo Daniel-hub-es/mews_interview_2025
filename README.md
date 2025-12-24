@@ -189,7 +189,7 @@ order by count(*) DESC;
 
 ---
 
-2) What are the typical guests who do online check-in? Is it somehow different when you compare reservations created across different weekdays (table `reservation`, `IsOnlineCheckin` column)?
+#### 2) What are the typical guests who do online check-in? Is it somehow different when you compare reservations created across different weekdays (table `reservation`, `IsOnlineCheckin` column)?
 
 For this analysis, we have created a fct table called `fct__online_checkins` from the intermediate model `int__reservations_rates` joining it with `dim__calendar` table be able to make the comparasion across different weekdays in the **mart layer**:
 
@@ -332,7 +332,7 @@ order by amount_of_reservations desc;
 
 ---
 
-3) Look at the average night revenue per single occupied capacity. What guest segment is the most profitable per occupied space unit? And what guest segment is the least profitable?
+#### 3) Look at the average night revenue per single occupied capacity. What guest segment is the most profitable per occupied space unit? And what guest segment is the least profitable?
 
 For this analysis, we have created a fct table called `fct__revenue` from the intermediate model `int__reservations_rates` to know wich is the most and least profitable guest segment pero occupied space unit in **mart layer**:
 
@@ -416,4 +416,83 @@ order by max_rev_per_capacity desc
 
 ---
 
+#### 4) Bonus: As a bonus assignment, we want to motivate our hotels to promote online checkin and we want to give them some hard data. Look at the data and your analysis again and estimate what would be the impact on total room revenue if the overall usage of online checkin doubled.
 
+For this analysis, we have created a fct table called `fct__checkins_growth` from the intermediate model `int__reservations_rates` and create calculations to show actual revenua and possible growth on revenue based on the growth of online checkins in the **mart layer**:
+
+```sql
+select *
+from fct__checkins_growth;
+```
+
+The sql logic to build the mart:
+
+```sql
+with
+
+	base as (
+		select *
+		from {{ ref('int__reservations_rates') }}
+	),
+
+	-- the following CTE creates two rows of data (online and desk checks)
+	metrics as (
+		select 
+			is_online_checkin,
+			count(*) as total_bookings,
+			sum(night_cost_sum) as total_night_cost_sum,
+			-- shows if digital guests spend more on average than on-site guests
+			avg(night_cost_sum) as avg_night_cost_sum
+		from base
+		group by 1
+	),
+
+	proposal_metrics as (
+		select
+				-- case check if the group of the resulting rows is an online guest or on-site guests
+				-- collapsing into one single row by max() by column when the other result is 0 
+		        max(case 
+						when is_online_checkin = 1 
+						then total_bookings 
+						else 0 
+					end) as online_bookings,
+		        max(case 
+						when is_online_checkin = 1 
+						then avg_night_cost_sum 
+						else 0 
+					end) as avg_online_rev,
+		        max(case 
+						when is_online_checkin = 0 
+						then avg_night_cost_sum 
+						else 0 
+					end) as avg_offline_rev,
+				-- total revenue and global total bookings to compare in the final calculations
+		        sum(total_night_cost_sum) as total_revenue,
+		        sum(total_bookings) as global_total_bookings
+		    from metrics			
+	),
+
+	calculated_diff as (
+		select
+			-- metrics
+			global_total_bookings,
+			online_bookings,
+			avg_online_rev,
+			avg_offline_rev,
+			-- calculate the difference between online and ofline rev
+			(avg_online_rev - avg_offline_rev) as avg_revenue_diff,
+			-- total current revenue
+			total_revenue as current_total_revenue,
+			-- the incremental gain by bookings * extra value per booking calculation to show extra revenue
+			online_bookings * (avg_online_rev - avg_offline_rev) as online_projected_growth_revenue,
+			-- percentage revenue growth calculation using online_projected_growth_revenue calculated before
+			round(
+				((online_bookings * (avg_online_rev - avg_offline_rev) / total_revenue) * 100), 2
+			) as percentage_revenue_growth,
+			-- sum existing revenue and the extra revenue from moving from lower spender to higher spender (online checkins)
+			total_revenue + (online_bookings * (avg_online_rev - avg_offline_rev)) as projected_total_revenue
+		from proposal_metrics
+	)
+	
+select * from calculated_diff
+```
