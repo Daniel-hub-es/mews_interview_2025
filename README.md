@@ -91,7 +91,7 @@ Add the profiles.yml file into your .dbt folder:
 mews_project:
   outputs:
     dev:
-      dbname: mydatabase
+      dbname: mydb
       host: localhost
       pass: secret
       port: 5432
