@@ -91,7 +91,7 @@ Add the profiles.yml file into your .dbt folder:
 mews_project:
   outputs:
     dev:
-      dbname: mydb
+      dbname: mydatabase
       host: localhost
       pass: secret
       port: 5432
@@ -105,10 +105,87 @@ Navigate to the folder of the project `mews_project` and run `dbt debug` to ensu
 
 Build the entire project to load `seeds`, `snapshots`, `models` and `tests` in **DAG** order:
 ```bash
+dbt seed
+```
+```bash
 dbt build
 ```
 
+---
 
+## 📊 Analysis
+
+### 1. SQL ad-hoc queries
+
+#### 1) What are the popular choices of booking rates (table `rate`, columns `ShortRateName` or `RateName`) for different segments of customers (table `reservation`, columns `AgeGroup`, `Gender`, `NationalityCode`)?
+
+For this analysis, we have created a fct table called `fct__rate_popularity` from the intermediate model `int__reservations_rates` where we have joined the tables `rate` and `reservation` as a denormalization process to avoid multiple joins in the **mart** layer.
+
+```sql
+select *
+from fct__rate_popularity
+limit 20;
+```
+The sql logic to build the mart:
+
+```sql
+with 
+
+    reservations_rates as (
+        select *
+        from {{ ref('int__reservations_rates') }}
+    ),
+    
+    rate_popularity as (
+    select
+        -- Dimensions
+        rate_name, 
+        age_group,
+        gender, 
+        nationality_code,
+        -- Number of records
+        count(*) as total_reservations
+    from reservations_rates
+    group by
+        -- group by clause to split the quantities
+        rate_name, 
+        age_group,
+        gender, 
+        nationality_code
+        -- order records from greater to lower amount
+    order by total_reservations desc
+    )
+
+select * from rate_popularity
+```
+
+The following ad-hoc sql query shows the popular **booking rates** by `age_group`:
+
+```sql
+select rate_name, age_group, count(*) as booking_rate_volume
+from fct__rate_popularity
+group by rate_name, age_group
+order by count(*) DESC;
+```
+
+The next ad-hoc sql query shows the popular **booking rates** by `gender`:
+
+```sql
+select rate_name, gender, count(*) as booking_rate_volume
+from fct__rate_popularity
+group by rate_name, gender
+order by count(*) DESC;
+```
+
+The last ad-hoc query shows the popular **booking rates** by `nationality_code` without the `NULL` nationality records:
+
+```sql
+select rate_name, nationality_code, count(*) as booking_rate_volume
+from fct__rate_popularity
+where nationality_code is not null
+group by rate_name, nationality_code
+order by count(*) DESC;
+```
 
 
 
