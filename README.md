@@ -147,12 +147,12 @@ with
         count(*) as total_reservations
     from reservations_rates
     group by
-        -- group by clause to split the quantities
+        -- group by clause for the aggregation
         rate_name, 
         age_group,
         gender, 
         nationality_code
-        -- order records from greater to lower amount
+        -- order records from the greatest to the lowest amount
     order by total_reservations desc
     )
 
@@ -187,6 +187,146 @@ group by rate_name, nationality_code
 order by count(*) DESC;
 ```
 
+---
 
+2) What are the typical guests who do online check-in? Is it somehow different when you compare reservations created across different weekdays (table `reservation`, `IsOnlineCheckin` column)?
 
+For this analysis, we have created a fct table called `fct__online_checkins` from the intermediate model `int__reservations_rates` joining it with `dim__calendar` table be able to make the comparasion across different weekdays in the **mart layer**:
+
+```sql
+select *
+from fct__online_checkins
+limit 20;
+```
+
+The sql logic to build the mart:
+
+```sql
+
+with
+  -- Intermediate model (rates + reservations)
+	base as (
+		select *
+		from  {{ ref('int__reservations_rates') }}
+	),
+  -- aux dimensional calendar table with days of the week
+	calendar as (
+		select *
+		from {{ref('dim__calendar')}}
+	),
+
+	final as (
+		select
+      -- date and weekday
+			base.created_utc,
+			cal.weekday as created_day,
+      -- dimensions
+			base.age_group,
+			base.gender,
+			base.nationality_code,
+			base.rate_name,
+			count(*) as total_reservations, -- amoubnt of reservations
+			sum(is_online_checkin) as total_online_checkin --amount of reservations that are online
+		from base
+    -- join weekdays by date with base table
+		left join calendar cal
+		on cast(base.created_utc as date) = cal.dates
+		group by
+      -- group by clause for the aggregation
+			base.created_utc,
+			cal.weekday,	
+			base.age_group,
+			base.gender,
+			base.nationality_code,
+			base.rate_name
+    -- order records from the greatest to the lowest amount
+		order by total_online_checkin desc
+	)
+
+select * from final
+```
+
+The following sql queries shows the `age_group` that usually makes more online check-ins and the weekdays that make more reservations:
+
+```sql
+select
+	age_group,
+	sum(total_reservations) as amount_of_reservations,
+	sum(total_online_checkin) as amount_of_online_checkin
+from fct__online_checkins
+group by age_group, total_reservations, total_online_checkin
+order by amount_of_online_checkin desc;
+```
+```sql
+select
+	created_day,
+	age_group,
+	sum(total_reservations) as amount_of_reservations
+from fct__online_checkins
+group by
+  age_group,
+  created_day,
+  total_reservations,
+  total_online_checkin
+order by
+  age_group,
+  amount_of_reservations desc;
+```
+
+The following query shows the `gender`  that usually makes more online check-ins and the weekdays that make more reservations:
+
+```sql
+select
+	gender,
+	sum(total_reservations) as amount_of_reservations,
+	sum(total_online_checkin) as amount_of_online_checkin
+from fct__online_checkins
+group by
+  gender,
+  total_reservations,
+  total_online_checkin
+order by amount_of_online_checkin desc;
+```
+```sql
+select
+	created_day,
+	gender,
+	sum(total_reservations) as amount_of_reservations
+from fct__online_checkins
+group by
+  gender,
+  created_day,
+  total_reservations,
+  total_online_checkin
+order by gender, amount_of_reservations desc
+```
+
+The following query shows the `nationality` that usually makes more online check-ins and the weekdays that make more reservations without the `NULL` nationality records:
+
+```sql
+select
+	nationality_code,
+	sum(total_reservations) as amount_of_reservations,
+	sum(total_online_checkin) as amount_of_online_checkin
+from fct__online_checkins
+where nationality_code is not null
+group by
+  nationality_code,
+  total_reservations,
+  total_online_checkin
+order by amount_of_online_checkin desc;
+```
+```sql
+select
+	created_day,
+	nationality_code,
+	sum(total_reservations) as amount_of_reservations
+from fct__online_checkins
+where nationality_code is not NULL
+group by
+  nationality_code,
+  created_day,
+  total_reservations,
+  total_online_checkin
+order by amount_of_reservations desc;
 
