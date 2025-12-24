@@ -202,7 +202,6 @@ limit 20;
 The sql logic to build the mart:
 
 ```sql
-
 with
   -- Intermediate model (rates + reservations)
 	base as (
@@ -273,7 +272,7 @@ order by
   amount_of_reservations desc;
 ```
 
-The following query shows the `gender`  that usually makes more online check-ins and the weekdays that make more reservations:
+The next queries shows the `gender`  that usually makes more online check-ins and the weekdays that make more reservations:
 
 ```sql
 select
@@ -301,7 +300,7 @@ group by
 order by gender, amount_of_reservations desc
 ```
 
-The following query shows the `nationality` that usually makes more online check-ins and the weekdays that make more reservations without the `NULL` nationality records:
+The last queries shows the `nationality` that usually makes more online check-ins and the weekdays that make more reservations without the `NULL` nationality records:
 
 ```sql
 select
@@ -329,4 +328,92 @@ group by
   total_reservations,
   total_online_checkin
 order by amount_of_reservations desc;
+```
+
+---
+
+3) Look at the average night revenue per single occupied capacity. What guest segment is the most profitable per occupied space unit? And what guest segment is the least profitable?
+
+For this analysis, we have created a fct table called `fct__revenue` from the intermediate model `int__reservations_rates` to know wich is the most and least profitable guest segment pero occupied space unit in **mart layer**:
+
+```sql
+select *
+from fct__revenue
+limit 20;
+```
+
+The sql logic to build the mart:
+
+```sql
+with 
+
+    base as (
+        select *
+        from  {{ ref('int__reservations_rates') }}
+    ),
+
+    final as (
+        select
+            created_utc,
+			-- Dimensions
+            age_group,
+            gender,
+            nationality_code,
+            rate_name,
+            night_count,
+            night_cost_sum,
+			-- Measures for the calculation
+            occupied_space_sum,
+            guest_count_sum,
+			-- Normalize the revenue by dividing the total cost by the capacity units used
+			-- Case statements prevent divisions by zero
+            case 
+                when occupied_space_sum > 0 
+                    then night_cost_sum / occupied_space_sum 
+                else 0 
+            end as rev_per_capacity
+
+        from base
+        order by rev_per_capacity desc
+    )
+
+select * from final
+```
+
+The following sql query shows the `age_group` that is most profitable and least profitable:
+
+```sql
+select
+	age_group,
+	max(rev_per_capacity) as max_rev_per_capacity
+from fct__revenue
+group by age_group
+order by max_rev_per_capacity desc
+```
+
+The next sql query shows the `gender` that is most profitable and least profitable:
+
+```sql
+select
+	gender,
+	max(rev_per_capacity) as max_rev_per_capacity
+from fct__revenue
+group by gender
+order by max_rev_per_capacity desc
+```
+
+The last sql query shows the `nationality_code` that is most profitable and least profitable:
+
+```sql
+select
+	nationality_code,
+	max(rev_per_capacity) as max_rev_per_capacity
+from fct__revenue
+where nationality_code is not null
+group by nationality_code
+order by max_rev_per_capacity desc
+```
+
+---
+
 
