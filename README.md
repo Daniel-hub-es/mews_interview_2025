@@ -316,6 +316,23 @@ select * from final
 
 The following [ad-hoc sql queries](./mews_project/analyses/key_question_two) shows the guests and the amount of online checkins and the amount of online checkings per weekday (`age_group`, `gender` and `nationality_code`). 
 
+#### Typical guest who do online checkins:
+
+```sql
+select 
+	age_group,
+	gender,
+	nationality_code,
+    sum(total_online_checkin) as amount_of_online_checkin
+from fct__online_checkins
+group by age_group, gender, nationality_code
+order by sum(total_online_checkin) desc
+limit 1
+```
+| age_group | gender | nationality_code | amount_of_online_checkin |
+|-----------|--------|------------------|--------------------------|
+| 35        | 1      | GB               | 8                        |
+
 #### Amount of reservations and online checkins by dimension:
 
 | dimension_type   | value | amount_of_reservations | amount_of_online_checkin |
