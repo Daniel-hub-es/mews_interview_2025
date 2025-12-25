@@ -159,33 +159,102 @@ with
 select * from rate_popularity
 ```
 
-The following ad-hoc sql query shows the popular **booking rates** by `age_group`:
+The following [ad-hoc sql queries](./mews_project/analyses/key_question_one) shows the popular **booking rates** for the diferent dimensions (`age_group`, `gender` and `nationality_code`. 
 
-```sql
-select rate_name, age_group, count(*) as booking_rate_volume
-from fct__rate_popularity
-group by rate_name, age_group
-order by count(*) DESC;
-```
+#### Popular booking rates by gender:
 
-The next ad-hoc sql query shows the popular **booking rates** by `gender`:
+| rate_name      | gender | booking_rate_volume |
+|----------------|--------|---------------------|
+| Fully Flexible | 0      | 8                   |
+| Fully Flexible | 1      | 156                 |
+| Fully Flexible | 2      | 73                  |
 
-```sql
-select rate_name, gender, count(*) as booking_rate_volume
-from fct__rate_popularity
-group by rate_name, gender
-order by count(*) DESC;
-```
+#### Popular booking rates by age_group:
 
-The last ad-hoc query shows the popular **booking rates** by `nationality_code` without the `NULL` nationality records:
+| rate_name       | age_group | booking_rate_volume |
+|-----------------|-----------|---------------------|
+| Fully Flexible  | 0         | 57                  |
+| Fully Flexible  | 25        | 41                  |
+| Fully Flexible  | 35        | 43                  |
+| Fully Flexible  | 45        | 46                  |
+| Fully Flexible  | 55        | 34                  |
+| Fully Flexible  | 65        | 14                  |
+| Early - 21 days | 100       | 3                   |
 
-```sql
-select rate_name, nationality_code, count(*) as booking_rate_volume
-from fct__rate_popularity
-where nationality_code is not null
-group by rate_name, nationality_code
-order by count(*) DESC;
-```
+#### Popular booking rates by nationality (avoiding `NULL` records):
+
+| rate_name             | nationality_code | booking_rate_volume |
+|-----------------------|------------------|---------------------|
+| Fully Flexible        | AE               | 2                   |
+| Min 3 nights          | AL               | 1                   |
+| Fully Flexible        | AR               | 2                   |
+| Fully Flexible        | AS               | 1                   |
+| Fully Flexible        | AT               | 4                   |
+| Fully Flexible        | AU               | 5                   |
+| Fully Flexible        | BE               | 5                   |
+| Fully Flexible        | BG               | 1                   |
+| Early - 60 days       | BH               | 1                   |
+| Fully Flexible        | BR               | 3                   |
+| Fully Flexible        | BY               | 2                   |
+| Fully Flexible        | CA               | 7                   |
+| Fully Flexible        | CH               | 6                   |
+| Fully Flexible        | CL               | 1                   |
+| Early - 21 days       | CN               | 8                   |
+| Min 4 nights          | CR               | 1                   |
+| Fully Flexible        | CZ               | 9                   |
+| Fully Flexible        | DE               | 11                  |
+| Fully Flexible        | DK               | 5                   |
+| Fully Flexible        | DO               | 2                   |
+| Fully Flexible        | EE               | 1                   |
+| Non Refundable BAR BB | ES               | 3                   |
+| Fully Flexible        | FI               | 1                   |
+| Fully Flexible        | FR               | 10                  |
+| Fully Flexible        | GB               | 13                  |
+| Min 3 nights          | GR               | 1                   |
+| Fully Flexible        | HK               | 3                   |
+| Fully Flexible        | HU               | 1                   |
+| Fully Flexible        | ID               | 1                   |
+| Fully Flexible        | IE               | 5                   |
+| Fully Flexible        | IL               | 6                   |
+| Fully Flexible        | IN               | 3                   |
+| Fully Flexible        | IQ               | 1                   |
+| Min 3 nights          | IR               | 1                   |
+| Fully Flexible        | IS               | 1                   |
+| Fully Flexible        | IT               | 9                   |
+| Fully Flexible        | JO               | 1                   |
+| Fully Flexible        | JP               | 4                   |
+| Fully Flexible        | KR               | 5                   |
+| Min 3 nights          | KW               | 2                   |
+| Fully Flexible        | LB               | 2                   |
+| Non Refundable BAR BB | LT               | 1                   |
+| Fully Flexible        | LU               | 3                   |
+| Fully Flexible        | MC               | 1                   |
+| Fully Flexible        | MT               | 1                   |
+| Fully Flexible        | MX               | 6                   |
+| Non Refundable BAR BB | MY               | 1                   |
+| Fully Flexible        | NL               | 7                   |
+| Fully Flexible        | NO               | 3                   |
+| Fully Flexible        | NZ               | 3                   |
+| Fully Flexible        | PE               | 1                   |
+| Early - 21 days       | PH               | 2                   |
+| Fully Flexible        | PL               | 3                   |
+| Fully Flexible        | PR               | 1                   |
+| Fully Flexible        | PT               | 1                   |
+| Min 4 nights          | QA               | 2                   |
+| Fully Flexible        | RO               | 1                   |
+| Fully Flexible        | RU               | 7                   |
+| Fully Flexible        | SA               | 3                   |
+| Fully Flexible        | SC               | 1                   |
+| Fully Flexible        | SE               | 6                   |
+| Early - 21 days       | SG               | 3                   |
+| Fully Flexible        | SK               | 10                  |
+| Min 3 nights          | SY               | 1                   |
+| Fully Flexible        | TH               | 3                   |
+| Fully Flexible        | TJ               | 1                   |
+| Fully Flexible        | TR               | 3                   |
+| Fully Flexible        | TW               | 2                   |
+| Fully Flexible        | UA               | 2                   |
+| Fully Flexible        | US               | 16                  |
 
 ---
 
