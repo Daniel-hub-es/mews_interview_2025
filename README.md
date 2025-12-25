@@ -318,17 +318,6 @@ The following [ad-hoc sql queries](./mews_project/analyses/key_question_two) sho
 
 #### Typical guest who do online checkins:
 
-```sql
-select 
-	age_group,
-	gender,
-	nationality_code,
-    sum(total_online_checkin) as amount_of_online_checkin
-from fct__online_checkins
-group by age_group, gender, nationality_code
-order by sum(total_online_checkin) desc
-limit 1
-```
 | age_group | gender | nationality_code | amount_of_online_checkin |
 |-----------|--------|------------------|--------------------------|
 | 35        | 1      | GB               | 8                        |
@@ -430,40 +419,6 @@ select * from final
 The following [ad-hoc sql queries](./mews_project/analyses/key_question_three) shows the most and least profitable general guest and most and least profitable guest by dimensions (`age_group`, `gender` and `nationality_code`). 
 
 #### Typical guesst that are most and least profitable:
-
-```sql
-with
-
-	most_profitable as(
-		select *
-		from fct__revenue
-		where nationality_code is not null
-        and rev_per_capacity != 0
-		order by rev_per_capacity desc
-		limit 1
-	),
-
-	least_profitable as(
-		select *
-		from fct__revenue
-		where nationality_code is not null
-		and rev_per_capacity != 0
-		order by rev_per_capacity asc
-		limit 1
-	),
-
-	final as (
-		select *
-		from most_profitable
-
-		union
-
-		select *
-		from least_profitable
-	)
-
-select * from final
-```
 
 | created_utc                | age_group | gender | nationality_code | rate_name             | night_count | night_cost_sum | occupied_space_sum | guest_count_sum | rev_per_capacity       |
 |----------------------------|-----------|--------|------------------|-----------------------|-------------|----------------|--------------------|-----------------|------------------------|
