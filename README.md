@@ -314,90 +314,51 @@ with
 select * from final
 ```
 
-The following sql queries shows the `age_group` that usually makes more online check-ins and the weekdays that make more reservations:
+The following [ad-hoc sql queries](./mews_project/analyses/key_question_two) shows the guests and the amount of online checkins and the amount of online checkings per weekday (`age_group`, `gender` and `nationality_code`). 
 
-```sql
-select
-	age_group,
-	sum(total_reservations) as amount_of_reservations,
-	sum(total_online_checkin) as amount_of_online_checkin
-from fct__online_checkins
-group by age_group, total_reservations, total_online_checkin
-order by amount_of_online_checkin desc;
-```
-```sql
-select
-	created_day,
-	age_group,
-	sum(total_reservations) as amount_of_reservations
-from fct__online_checkins
-group by
-  age_group,
-  created_day,
-  total_reservations,
-  total_online_checkin
-order by
-  age_group,
-  amount_of_reservations desc;
-```
+#### Amount of reservations and online checkins by dimension:
 
-The next queries shows the `gender`  that usually makes more online check-ins and the weekdays that make more reservations:
+| dimension_type   | value | amount_of_reservations | amount_of_online_checkin |
+|------------------|-------|------------------------|--------------------------|
+| age_group        | 35    | 279                    | 47                       |
+| gender           | 1     | 1295                   | 119                      |
+| nationality_code | US    | 243                    | 25                       |
 
-```sql
-select
-	gender,
-	sum(total_reservations) as amount_of_reservations,
-	sum(total_online_checkin) as amount_of_online_checkin
-from fct__online_checkins
-group by
-  gender,
-  total_reservations,
-  total_online_checkin
-order by amount_of_online_checkin desc;
-```
-```sql
-select
-	created_day,
-	gender,
-	sum(total_reservations) as amount_of_reservations
-from fct__online_checkins
-group by
-  gender,
-  created_day,
-  total_reservations,
-  total_online_checkin
-order by gender, amount_of_reservations desc
-```
+#### Amount of reservations and online checkins by `age_group` per weekday:
 
-The last queries shows the `nationality` that usually makes more online check-ins and the weekdays that make more reservations without the `NULL` nationality records:
+| created_day | dimension_type | value | amount_of_reservations | amount_of_online_checkin |
+|-------------|----------------|-------|------------------------|--------------------------|
+| Friday      | age_group      | 45    | 35                     | 6                        |
+| Monday      | age_group      | 35    | 51                     | 11                       |
+| Saturday    | age_group      | 25    | 24                     | 6                        |
+| Sunday      | age_group      | 55    | 14                     | 4                        |
+| Thursday    | age_group      | 35    | 49                     | 9                        |
+| Tuesday     | age_group      | 35    | 53                     | 9                        |
+| Wednesday   | age_group      | 55    | 20                     | 6                        |
 
-```sql
-select
-	nationality_code,
-	sum(total_reservations) as amount_of_reservations,
-	sum(total_online_checkin) as amount_of_online_checkin
-from fct__online_checkins
-where nationality_code is not null
-group by
-  nationality_code,
-  total_reservations,
-  total_online_checkin
-order by amount_of_online_checkin desc;
-```
-```sql
-select
-	created_day,
-	nationality_code,
-	sum(total_reservations) as amount_of_reservations
-from fct__online_checkins
-where nationality_code is not NULL
-group by
-  nationality_code,
-  created_day,
-  total_reservations,
-  total_online_checkin
-order by amount_of_reservations desc;
-```
+#### Amount of reservations and online checkins by `gender` per weekday:
+
+| created_day | dimension_type | value | amount_of_reservations | amount_of_online_checkin |
+|-------------|----------------|-------|------------------------|--------------------------|
+| Friday      | gender         | 1     | 163                    | 15                       |
+| Monday      | gender         | 1     | 239                    | 19                       |
+| Saturday    | gender         | 1     | 122                    | 14                       |
+| Sunday      | gender         | 1     | 115                    | 12                       |
+| Thursday    | gender         | 1     | 228                    | 18                       |
+| Tuesday     | gender         | 1     | 209                    | 21                       |
+| Wednesday   | gender         | 1     | 219                    | 20                       |
+
+#### Amount of reservations and online checkins by `nationality` per weekday:
+
+| created_day | dimension_type   | value | amount_of_reservations | amount_of_online_checkin |
+|-------------|------------------|-------|------------------------|--------------------------|
+| Friday      | nationality_code | RU    | 9                      | 3                        |
+| Monday      | nationality_code | GB    | 42                     | 6                        |
+| Saturday    | nationality_code | US    | 29                     | 5                        |
+| Sunday      | nationality_code | GB    | 14                     | 2                        |
+| Thursday    | nationality_code | SE    | 6                      | 3                        |
+| Tuesday     | nationality_code | US    | 34                     | 5                        |
+| Wednesday   | nationality_code | US    | 33                     | 5                        |
 
 ---
 
