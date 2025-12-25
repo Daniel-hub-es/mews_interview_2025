@@ -159,7 +159,7 @@ with
 select * from rate_popularity
 ```
 
-The following [ad-hoc sql queries](./mews_project/analyses/key_question_one) shows the popular **booking rates** for the diferent dimensions (`age_group`, `gender` and `nationality_code`. 
+The following [ad-hoc sql queries](./mews_project/analyses/key_question_one) shows the popular **booking rates** for the diferent dimensions (`age_group`, `gender` and `nationality_code`). 
 
 #### Popular booking rates by gender:
 
