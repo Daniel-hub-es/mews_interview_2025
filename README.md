@@ -427,39 +427,70 @@ with
 select * from final
 ```
 
-The following sql query shows the `age_group` that is most profitable and least profitable:
+The following [ad-hoc sql queries](./mews_project/analyses/key_question_three) shows the most and least profitable general guest and most and least profitable guest by dimensions (`age_group`, `gender` and `nationality_code`). 
+
+#### Typical guesst that are most and least profitable:
 
 ```sql
-select
-	age_group,
-	max(rev_per_capacity) as max_rev_per_capacity
-from fct__revenue
-group by age_group
-order by max_rev_per_capacity desc
+with
+
+	most_profitable as(
+		select *
+		from fct__revenue
+		where nationality_code is not null
+        and rev_per_capacity != 0
+		order by rev_per_capacity desc
+		limit 1
+	),
+
+	least_profitable as(
+		select *
+		from fct__revenue
+		where nationality_code is not null
+		and rev_per_capacity != 0
+		order by rev_per_capacity asc
+		limit 1
+	),
+
+	final as (
+		select *
+		from most_profitable
+
+		union
+
+		select *
+		from least_profitable
+	)
+
+select * from final
 ```
 
-The next sql query shows the `gender` that is most profitable and least profitable:
+| created_utc                | age_group | gender | nationality_code | rate_name             | night_count | night_cost_sum | occupied_space_sum | guest_count_sum | rev_per_capacity       |
+|----------------------------|-----------|--------|------------------|-----------------------|-------------|----------------|--------------------|-----------------|------------------------|
+| 2019-08-30 17:16:53.597785 | 35        | 2      | GB               | Non Refundable BAR BB | 2           | 2.805924       | 4                  | 2               | 0.70148100000000000000 |
+| 2019-10-20 12:13:20.633233 | 0         | 1      | RU               | Fully Flexible        | 1           | 682.112213     | 2                  | 2               | 341.0561065000000000   |
 
-```sql
-select
-	gender,
-	max(rev_per_capacity) as max_rev_per_capacity
-from fct__revenue
-group by gender
-order by max_rev_per_capacity desc
-```
+#### Typical guesst that are most and least profitable by age:
 
-The last sql query shows the `nationality_code` that is most profitable and least profitable:
+| age_group | avg_revenue_per_capacity |
+|-----------|--------------------------|
+| 55        | 95.8055265713386606      |
+| 0         | 42.9521126941445963      |
 
-```sql
-select
-	nationality_code,
-	max(rev_per_capacity) as max_rev_per_capacity
-from fct__revenue
-where nationality_code is not null
-group by nationality_code
-order by max_rev_per_capacity desc
-```
+#### Typical guesst that are most and least profitable by gender:
+
+| gender | avg_revenue_per_capacity |
+|--------|--------------------------|
+| 2      | 83.93590516426511243500  |
+| 0      | 33.3004128418985992      |
+
+#### Typical guesst that are most and least profitable by nationality:
+
+| nationality_code | avg_revenue_per_capacity |
+|------------------|--------------------------|
+| PT               | 147.0187010000000000     |
+| AL               | 36.6134050000000000      |
+
 
 ---
 
