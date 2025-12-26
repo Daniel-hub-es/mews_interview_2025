@@ -18,104 +18,41 @@ The following [ad-hoc sql queries](./mews_project/analyses/key_question_one) sho
 
 #### Popular booking rates by gender:
 
-| created_year_reservation | month  | popular_rate    | gender    | popular_rate_reservations | percentage_pr | total_reservations | percentage_tr |
-|--------------------------|--------|-----------------|-----------|---------------------------|---------------|--------------------|---------------|
-| 2019                     | August | Fully Flexible  | female    | 78                        | 16.08         | 360                | 3.12          |
-| 2019                     | August | Fully Flexible  | male      | 280                       | 57.73         | 1295               | 11.20         |
-| 2019                     | August | Fully Flexible  | undefined | 127                       | 26.19         | 846                | 5.08          |
-| 2019                     | August | Early - 21 days | 100       | 2                         | 0.41          | 16                 | 0.08          |
-
+| created_year_reservation | created_month_reservation | start_year_reservation | start_month_reservation | popular_rate    | gender    | popular_rate_reservations | percentage_pr | total_reservations | percentage_tr |
+|--------------------------|---------------------------|------------------------|-------------------------|-----------------|-----------|---------------------------|---------------|--------------------|---------------|
+| 2019                     | 8                         | 2019                   | 9                       | Fully Flexible  | female    | 18                        | 13.24         | 360                | 0.72          |
+| 2019                     | 8                         | 2019                   | 8                       | Fully Flexible  | male      | 42                        | 30.88         | 1295               | 1.68          |
+| 2019                     | 9                         | 2020                   | 4                       | Early - 60 days | undefined | 76                        | 55.88         | 846                | 3.04          |
 
 
 #### Popular booking rates by age_group:
 
-| created_year_reservation | month     | popular_rate    | age_group | popular_rate_reservations | percentage_pr | total_reservations | percentage_tr |
-|--------------------------|-----------|-----------------|-----------|---------------------------|---------------|--------------------|---------------|
-| 2019                     | August    | Fully Flexible  | 0         | 261                       | 52.94         | 1520               | 10.44         |
-| 2019                     | August    | Fully Flexible  | 25        | 56                        | 11.36         | 234                | 2.24          |
-| 2019                     | August    | Fully Flexible  | 35        | 76                        | 15.42         | 279                | 3.04          |
-| 2019                     | August    | Fully Flexible  | 45        | 43                        | 8.72          | 241                | 1.72          |
-| 2019                     | August    | Fully Flexible  | 55        | 41                        | 8.32          | 146                | 1.64          |
-| 2019                     | September | Fully Flexible  | 65        | 14                        | 2.84          | 65                 | 0.56          |
-| 2019                     | August    | Early - 21 days | 100       | 2                         | 0.41          | 16                 | 0.08          |
+| created_year_reservation | created_month_reservation | start_year_reservation | start_month_reservation | popular_rate    | age_group | popular_rate_reservations | percentage_pr | total_reservations | percentage_tr |
+|--------------------------|---------------------------|------------------------|-------------------------|-----------------|-----------|---------------------------|---------------|--------------------|---------------|
+| 2019                     | 9                         | 2020                   | 4                       | Early - 60 days | 0         | 76                        | 54.68         | 1520               | 3.04          |
+| 2019                     | 9                         | 2019                   | 9                       | Fully Flexible  | 25        | 13                        | 9.35          | 234                | 0.52          |
+| 2019                     | 8                         | 2019                   | 8                       | Fully Flexible  | 35        | 14                        | 10.07         | 279                | 0.56          |
+| 2019                     | 9                         | 2019                   | 10                      | Fully Flexible  | 45        | 14                        | 10.07         | 241                | 0.56          |
+| 2019                     | 8                         | 2019                   | 9                       | Fully Flexible  | 55        | 14                        | 10.07         | 146                | 0.56          |
+| 2019                     | 9                         | 2019                   | 10                      | Fully Flexible  | 65        | 5                         | 3.60          | 65                 | 0.20          |
+| 2019                     | 9                         | 2019                   | 10                      | Early - 21 days | 100       | 3                         | 2.16          | 16                 | 0.12          |
 
 
-#### Popular booking rates by nationality:
 
-| created_year_reservation | month     | popular_rate          | nationality_code | popular_rate_reservations | percentage_pr | total_reservations | percentage_tr |
-|--------------------------|-----------|-----------------------|------------------|---------------------------|---------------|--------------------|---------------|
-| 2019                     | August    | Fully Flexible        | Unknown          | 131                       | 23.82         | 1096               | 5.24          |
-| 2019                     | August    | Fully Flexible        | DE               | 82                        | 14.91         | 154                | 3.28          |
-| 2019                     | August    | Fully Flexible        | US               | 51                        | 9.27          | 243                | 2.04          |
-| 2019                     | September | Fully Flexible        | GB               | 39                        | 7.09          | 187                | 1.56          |
-| 2019                     | August    | Fully Flexible        | CZ               | 30                        | 5.45          | 67                 | 1.20          |
-| 2019                     | September | Fully Flexible        | SK               | 14                        | 2.55          | 72                 | 0.56          |
-| 2019                     | August    | Fully Flexible        | IT               | 12                        | 2.18          | 48                 | 0.48          |
-| 2019                     | August    | Fully Flexible        | RU               | 11                        | 2.00          | 51                 | 0.44          |
-| 2019                     | August    | Fully Flexible        | CN               | 10                        | 1.82          | 59                 | 0.40          |
-| 2019                     | August    | Fully Flexible        | FR               | 10                        | 1.82          | 46                 | 0.40          |
-| 2019                     | September | Fully Flexible        | NL               | 9                         | 1.64          | 23                 | 0.36          |
-| 2019                     | September | Fully Flexible        | IL               | 8                         | 1.45          | 39                 | 0.32          |
-| 2019                     | August    | Fully Flexible        | CH               | 7                         | 1.27          | 18                 | 0.28          |
-| 2019                     | August    | Fully Flexible        | SA               | 7                         | 1.27          | 15                 | 0.28          |
-| 2019                     | August    | Fully Flexible        | AT               | 6                         | 1.09          | 17                 | 0.24          |
-| 2019                     | September | Fully Flexible        | MX               | 5                         | 0.91          | 18                 | 0.20          |
-| 2019                     | August    | Fully Flexible        | AU               | 5                         | 0.91          | 24                 | 0.20          |
-| 2019                     | September | Non Refundable BAR BB | SE               | 5                         | 0.91          | 25                 | 0.20          |
-| 2019                     | August    | Min 4 nights          | QA               | 4                         | 0.73          | 6                  | 0.16          |
-| 2019                     | August    | Fully Flexible        | IE               | 4                         | 0.73          | 10                 | 0.16          |
-| 2019                     | August    | Fully Flexible        | JP               | 4                         | 0.73          | 11                 | 0.16          |
-| 2019                     | August    | Early - 60 days       | TH               | 4                         | 0.73          | 16                 | 0.16          |
-| 2019                     | August    | Fully Flexible        | KR               | 4                         | 0.73          | 15                 | 0.16          |
-| 2019                     | September | Fully Flexible        | DK               | 4                         | 0.73          | 13                 | 0.16          |
-| 2019                     | September | Fully Flexible        | BE               | 4                         | 0.73          | 13                 | 0.16          |
-| 2019                     | September | Fully Flexible        | BR               | 4                         | 0.73          | 11                 | 0.16          |
-| 2019                     | August    | Fully Flexible        | CA               | 4                         | 0.73          | 27                 | 0.16          |
-| 2019                     | September | Early - 21 days       | NO               | 4                         | 0.73          | 17                 | 0.16          |
-| 2019                     | September | Fully Flexible        | LU               | 3                         | 0.55          | 6                  | 0.12          |
-| 2019                     | August    | Fully Flexible        | ES               | 3                         | 0.55          | 18                 | 0.12          |
-| 2019                     | September | Non Refundable BAR BB | PL               | 3                         | 0.55          | 15                 | 0.12          |
-| 2019                     | August    | Fully Flexible        | HK               | 3                         | 0.55          | 5                  | 0.12          |
-| 2019                     | September | Fully Flexible        | ID               | 3                         | 0.55          | 7                  | 0.12          |
-| 2019                     | September | Non Refundable BAR BB | IN               | 3                         | 0.55          | 10                 | 0.12          |
-| 2019                     | September | Non Refundable BAR BB | AE               | 2                         | 0.36          | 9                  | 0.08          |
-| 2019                     | September | Fully Flexible        | AR               | 2                         | 0.36          | 2                  | 0.08          |
-| 2019                     | August    | Fully Flexible        | BY               | 2                         | 0.36          | 4                  | 0.08          |
-| 2019                     | August    | Fully Flexible        | DO               | 2                         | 0.36          | 2                  | 0.08          |
-| 2019                     | September | Fully Flexible        | KW               | 2                         | 0.36          | 8                  | 0.08          |
-| 2019                     | August    | Fully Flexible        | LB               | 2                         | 0.36          | 3                  | 0.08          |
-| 2019                     | September | Fully Flexible        | NZ               | 2                         | 0.36          | 4                  | 0.08          |
-| 2019                     | September | Early - 21 days       | PH               | 2                         | 0.36          | 3                  | 0.08          |
-| 2019                     | August    | Fully Flexible        | PR               | 2                         | 0.36          | 4                  | 0.08          |
-| 2019                     | September | Fully Flexible        | RO               | 2                         | 0.36          | 3                  | 0.08          |
-| 2019                     | October   | Early - 60 days       | SG               | 2                         | 0.36          | 10                 | 0.08          |
-| 2019                     | August    | Fully Flexible        | TR               | 2                         | 0.36          | 4                  | 0.08          |
-| 2019                     | August    | Fully Flexible        | TW               | 2                         | 0.36          | 7                  | 0.08          |
-| 2019                     | September | Fully Flexible        | IQ               | 1                         | 0.18          | 1                  | 0.04          |
-| 2019                     | September | Early - 60 days       | HU               | 1                         | 0.18          | 3                  | 0.04          |
-| 2019                     | August    | Non Refundable BAR BB | BG               | 1                         | 0.18          | 2                  | 0.04          |
-| 2019                     | September | Fully Flexible        | PE               | 1                         | 0.18          | 1                  | 0.04          |
-| 2019                     | September | Fully Flexible        | TJ               | 1                         | 0.18          | 1                  | 0.04          |
-| 2019                     | October   | Min 3 nights          | GR               | 1                         | 0.18          | 1                  | 0.04          |
-| 2019                     | August    | Fully Flexible        | AS               | 1                         | 0.18          | 1                  | 0.04          |
-| 2019                     | September | Fully Flexible        | PT               | 1                         | 0.18          | 1                  | 0.04          |
-| 2019                     | September | Early - 21 days       | FI               | 1                         | 0.18          | 3                  | 0.04          |
-| 2019                     | October   | Min 3 nights          | AL               | 1                         | 0.18          | 1                  | 0.04          |
-| 2019                     | August    | Fully Flexible        | EE               | 1                         | 0.18          | 1                  | 0.04          |
-| 2019                     | August    | Min 4 nights          | CR               | 1                         | 0.18          | 1                  | 0.04          |
-| 2019                     | August    | Fully Flexible        | SC               | 1                         | 0.18          | 1                  | 0.04          |
-| 2019                     | August    | Fully Flexible        | CL               | 1                         | 0.18          | 1                  | 0.04          |
-| 2019                     | October   | Fully Flexible        | UA               | 1                         | 0.18          | 3                  | 0.04          |
-| 2019                     | August    | Fully Flexible        | JO               | 1                         | 0.18          | 1                  | 0.04          |
-| 2019                     | October   | Fully Flexible        | BH               | 1                         | 0.18          | 2                  | 0.04          |
-| 2019                     | September | Min 3 nights          | SY               | 1                         | 0.18          | 1                  | 0.04          |
-| 2019                     | September | Non Refundable BAR BB | LT               | 1                         | 0.18          | 1                  | 0.04          |
-| 2019                     | August    | Early - 21 days       | IS               | 1                         | 0.18          | 2                  | 0.04          |
-| 2019                     | August    | Fully Flexible        | MC               | 1                         | 0.18          | 1                  | 0.04          |
-| 2019                     | September | Fully Flexible        | MT               | 1                         | 0.18          | 2                  | 0.04          |
-| 2019                     | October   | Min 3 nights          | IR               | 1                         | 0.18          | 1                  | 0.04          |
-| 2019                     | October   | Min 3 nights          | MY               | 1                         | 0.18          | 3                  | 0.04          |
+#### Popular booking rates by nationality (limited to 10 records):
 
+| created_year_reservation | created_month_reservation | start_year_reservation | start_month_reservation | popular_rate    | nationality_code | popular_rate_reservations | percentage_pr | total_reservations | percentage_tr |
+|--------------------------|---------------------------|------------------------|-------------------------|-----------------|------------------|---------------------------|---------------|--------------------|---------------|
+| 2019                     | 9                         | 2020                   | 4                       | Early - 60 days | Unknown          | 76                        | 25.50         | 1096               | 3.04          |
+| 2019                     | 9                         | 2020                   | 7                       | Fully Flexible  | GB               | 20                        | 6.71          | 187                | 0.80          |
+| 2019                     | 8                         | 2019                   | 11                      | Fully Flexible  | DE               | 15                        | 5.03          | 154                | 0.60          |
+| 2019                     | 8                         | 2019                   | 8                       | Fully Flexible  | US               | 12                        | 4.03          | 243                | 0.48          |
+| 2019                     | 8                         | 2020                   | 5                       | Fully Flexible  | CN               | 11                        | 3.69          | 59                 | 0.44          |
+| 2019                     | 8                         | 2020                   | 2                       | Fully Flexible  | CZ               | 8                         | 2.68          | 67                 | 0.32          |
+| 2019                     | 8                         | 2020                   | 4                       | Early - 60 days | TH               | 8                         | 2.68          | 16                 | 0.32          |
+| 2019                     | 9                         | 2019                   | 10                      | Early - 21 days | NO               | 6                         | 2.01          | 17                 | 0.24          |
+| 2019                     | 9                         | 2019                   | 10                      | Fully Flexible  | ID               | 6                         | 2.01          | 7                  | 0.24          |
+| 2019                     | 8                         | 2019                   | 8                       | Fully Flexible  | RU               | 6                         | 2.01          | 51                 | 0.24          |
 
 
 ---
