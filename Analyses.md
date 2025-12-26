@@ -6,42 +6,12 @@
 
 For this analysis, we have created a fct table called `fct__rate_popularity` from the intermediate model `int__reservations_rates` where we have joined the tables `rate` and `reservation` as a denormalization process to avoid multiple joins in the **mart** layer.
 
+The sql logic to build the mart: [`fct__rate_popularity`](https://github.com/Daniel-hub-es/mews_interview_2025/blob/main/mews_project/models/marts/fct/fct__rate_popularity.sql)
+
 ```sql
 select *
 from fct__rate_popularity
 limit 20;
-```
-The sql logic to build the mart:
-
-```sql
-with 
-
-    reservations_rates as (
-        select *
-        from {{ ref('int__reservations_rates') }}
-    ),
-    
-    rate_popularity as (
-    select
-        -- Dimensions
-        rate_name, 
-        age_group,
-        gender, 
-        nationality_code,
-        -- Number of records
-        count(*) as total_reservations
-    from reservations_rates
-    group by
-        -- group by clause for the aggregation
-        rate_name, 
-        age_group,
-        gender, 
-        nationality_code
-        -- order records from the greatest to the lowest amount
-    order by total_reservations desc
-    )
-
-select * from rate_popularity
 ```
 
 The following [ad-hoc sql queries](./mews_project/analyses/key_question_one) shows the popular **booking rates** for the diferent dimensions (`age_group`, `gender` and `nationality_code`). 
@@ -151,56 +121,12 @@ The following [ad-hoc sql queries](./mews_project/analyses/key_question_one) sho
 
 For this analysis, we have created a fct table called `fct__online_checkins` from the intermediate model `int__reservations_rates` joining it with `dim__calendar` table be able to make the comparasion across different weekdays in the **mart layer**:
 
+The sql logic to build the mart: [`fct__online_checkins`](https://github.com/Daniel-hub-es/mews_interview_2025/blob/main/mews_project/models/marts/fct/fct__online_checkins.sql)
+
 ```sql
 select *
 from fct__online_checkins
 limit 20;
-```
-
-The sql logic to build the mart:
-
-```sql
-with
-  -- Intermediate model (rates + reservations)
-    base as (
-        select *
-        from  {{ ref('int__reservations_rates') }}
-    ),
-  -- aux dimensional calendar table with days of the week
-    calendar as (
-        select *
-        from {{ref('dim__calendar')}}
-    ),
-
-    final as (
-        select
-      -- date and weekday
-            base.created_utc,
-            cal.weekday as created_day,
-      -- dimensions
-            base.age_group,
-            base.gender,
-            base.nationality_code,
-            base.rate_name,
-            count(*) as total_reservations, -- amoubnt of reservations
-            sum(is_online_checkin) as total_online_checkin --amount of reservations that are online
-        from base
-    -- join weekdays by date with base table
-        left join calendar cal
-        on cast(base.created_utc as date) = cal.dates
-        group by
-      -- group by clause for the aggregation
-            base.created_utc,
-            cal.weekday,	
-            base.age_group,
-            base.gender,
-            base.nationality_code,
-            base.rate_name
-    -- order records from the greatest to the lowest amount
-        order by total_online_checkin desc
-    )
-
-select * from final
 ```
 
 The following [ad-hoc sql queries](./mews_project/analyses/key_question_two) shows the guests and the amount of online checkins and the amount of online checkings per weekday (`age_group`, `gender` and `nationality_code`). 
@@ -262,48 +188,12 @@ The following [ad-hoc sql queries](./mews_project/analyses/key_question_two) sho
 
 For this analysis, we have created a fct table called `fct__revenue` from the intermediate model `int__reservations_rates` to know wich is the most and least profitable guest segment pero occupied space unit in **mart layer**:
 
+The sql logic to build the mart: [`fct__revenue`](https://github.com/Daniel-hub-es/mews_interview_2025/blob/main/mews_project/models/marts/fct/fct__revenue.sql)
+
 ```sql
 select *
 from fct__revenue
 limit 20;
-```
-
-The sql logic to build the mart:
-
-```sql
-with 
-
-    base as (
-        select *
-        from  {{ ref('int__reservations_rates') }}
-    ),
-
-    final as (
-        select
-            created_utc,
-            -- Dimensions
-            age_group,
-            gender,
-            nationality_code,
-            rate_name,
-            night_count,
-            night_cost_sum,
-            -- Measures for the calculation
-            occupied_space_sum,
-            guest_count_sum,
-            -- Normalize the revenue by dividing the total cost by the capacity units used
-            -- Case statements prevent divisions by zero
-            case 
-                when occupied_space_sum > 0 
-                    then night_cost_sum / occupied_space_sum 
-                else 0 
-            end as rev_per_capacity
-
-        from base
-        order by rev_per_capacity desc
-    )
-
-select * from final
 ```
 
 The following [ad-hoc sql queries](./mews_project/analyses/key_question_three) shows the most and least profitable general guest and most and least profitable guest by dimensions (`age_group`, `gender` and `nationality_code`). 
@@ -343,81 +233,11 @@ The following [ad-hoc sql queries](./mews_project/analyses/key_question_three) s
 
 For this analysis, we have created a fct table called `fct__checkins_growth` from the intermediate model `int__reservations_rates` and create calculations to show actual revenua and possible growth on revenue based on the growth of online checkins in the **mart layer**:
 
+The sql logic to build the mart: [`fct__checkins_growth`](https://github.com/Daniel-hub-es/mews_interview_2025/blob/main/mews_project/models/marts/fct/fct__checkins_growth.sql)
+
 ```sql
 select *
 from fct__checkins_growth;
-```
-
-The sql logic to build the mart:
-
-```sql
-with
-
-    base as (
-        select *
-        from {{ ref('int__reservations_rates') }}
-    ),
-
-    -- the following CTE creates two rows of data (online and desk checks)
-    metrics as (
-        select 
-            is_online_checkin,
-            count(*) as total_bookings,
-            sum(night_cost_sum) as total_night_cost_sum,
-            -- shows if digital guests spend more on average than on-site guests
-            avg(night_cost_sum) as avg_night_cost_sum
-        from base
-        group by 1
-    ),
-
-    proposal_metrics as (
-        select
-                -- case check if the group of the resulting rows is an online guest or on-site guests
-                -- collapsing into one single row by max() by column when the other result is 0 
-                max(case 
-                        when is_online_checkin = 1 
-                        then total_bookings 
-                        else 0 
-                    end) as online_bookings,
-                max(case 
-                        when is_online_checkin = 1 
-                        then avg_night_cost_sum 
-                        else 0 
-                    end) as avg_online_rev,
-                max(case 
-                        when is_online_checkin = 0 
-                        then avg_night_cost_sum 
-                        else 0 
-                    end) as avg_offline_rev,
-                -- total revenue and global total bookings to compare in the final calculations
-                sum(total_night_cost_sum) as total_revenue,
-                sum(total_bookings) as global_total_bookings
-            from metrics			
-    ),
-
-    calculated_diff as (
-        select
-            -- metrics
-            global_total_bookings,
-            online_bookings,
-            avg_online_rev,
-            avg_offline_rev,
-            -- calculate the difference between online and ofline rev
-            (avg_online_rev - avg_offline_rev) as avg_revenue_diff,
-            -- total current revenue
-            total_revenue as current_total_revenue,
-            -- the incremental gain by bookings * extra value per booking calculation to show extra revenue
-            online_bookings * (avg_online_rev - avg_offline_rev) as online_projected_growth_revenue,
-            -- percentage revenue growth calculation using online_projected_growth_revenue calculated before
-            round(
-                ((online_bookings * (avg_online_rev - avg_offline_rev) / total_revenue) * 100), 2
-            ) as percentage_revenue_growth,
-            -- sum existing revenue and the extra revenue from moving from lower spender to higher spender (online checkins)
-            total_revenue + (online_bookings * (avg_online_rev - avg_offline_rev)) as projected_total_revenue
-        from proposal_metrics
-    )
-    
-select * from calculated_diff
 ```
 
 The following table shows the difference between the average online revenue and the average offline revenue. 
