@@ -203,31 +203,35 @@ The following [ad-hoc sql queries](./mews_project/analyses/key_question_three) s
 
 #### Typical guesst that are most and least profitable:
 
-| created_utc                | age_group | gender | nationality_code | rate_name             | night_count | night_cost_sum | occupied_space_sum | guest_count_sum | rev_per_capacity       |
-|----------------------------|-----------|--------|------------------|-----------------------|-------------|----------------|--------------------|-----------------|------------------------|
-| 2019-08-30 17:16:53.597785 | 35        | 2      | GB               | Non Refundable BAR BB | 2           | 2.805924       | 4                  | 2               | 0.70148100000000000000 |
-| 2019-10-20 12:13:20.633233 | 0         | 1      | RU               | Fully Flexible        | 1           | 682.112213     | 2                  | 2               | 341.0561065000000000   |
+| age_group | gender | nationality_code | rate_name             | night_count | night_cost_sum | occupied_space_sum | guest_count_sum | rev_per_capacity |
+|-----------|--------|------------------|-----------------------|-------------|----------------|--------------------|-----------------|------------------|
+| 0         | male   | RU               | Fully Flexible        | 1           | 682.112        | 2                  | 2               | 341.056          |
+| 35        | female | GB               | Non Refundable BAR BB | 2           | 2.806          | 4                  | 2               | 0.701            |
+
 
 #### Typical guesst that are most and least profitable by age:
 
-| age_group | avg_revenue_per_capacity |
-|-----------|--------------------------|
-| 55        | 95.8055265713386606      |
-| 0         | 42.9521126941445963      |
+| age_group | rate_name    | avg_revenue_per_capacity |
+|-----------|--------------|--------------------------|
+| 55        | Suite Offer  | 138.443                  |
+| 65        | Min 5 nights | 8.859                    |
 
 #### Typical guesst that are most and least profitable by gender:
 
-| gender | avg_revenue_per_capacity |
-|--------|--------------------------|
-| 2      | 83.93590516426511243500  |
-| 0      | 33.3004128418985992      |
+| gender    | rate_name    | avg_revenue_per_capacity |
+|-----------|--------------|--------------------------|
+| male      | Suite Offer  | 156.247                  |
+| undefined | Min 3 nights | 13.083                   |
+
+
 
 #### Typical guesst that are most and least profitable by nationality:
 
-| nationality_code | avg_revenue_per_capacity |
-|------------------|--------------------------|
-| PT               | 147.0187010000000000     |
-| AL               | 36.6134050000000000      |
+| coalesce | rate_name       | avg_revenue_per_capacity |
+|----------|-----------------|--------------------------|
+| DK       | Early - 21 days | 246.473                  |
+| AS       | Fully Flexible  | 0.000                    |
+
 
 
 ---
