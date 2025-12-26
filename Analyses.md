@@ -135,7 +135,7 @@ The following [ad-hoc sql queries](./mews_project/analyses/key_question_two) sho
 
 | age_group | gender | nationality_code | amount_of_online_checkin |
 |-----------|--------|------------------|--------------------------|
-| 35        | 1      | GB               | 8                        |
+| 35        | male   | GB               | 8                        |
 
 #### Amount of reservations and online checkins by dimension:
 
