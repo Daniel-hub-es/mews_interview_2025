@@ -148,39 +148,42 @@ The following [ad-hoc sql queries](./mews_project/analyses/key_question_two) sho
 
 #### Amount of reservations and online checkins by `age_group` per weekday:
 
-| created_day | dimension_type | value | amount_of_reservations | amount_of_online_checkin |
-|-------------|----------------|-------|------------------------|--------------------------|
-| Friday      | age_group      | 45    | 35                     | 6                        |
-| Monday      | age_group      | 35    | 51                     | 11                       |
-| Saturday    | age_group      | 25    | 24                     | 6                        |
-| Sunday      | age_group      | 55    | 14                     | 4                        |
-| Thursday    | age_group      | 35    | 49                     | 9                        |
-| Tuesday     | age_group      | 35    | 53                     | 9                        |
-| Wednesday   | age_group      | 55    | 20                     | 6                        |
+| created_day | dimension_type | value | amount_of_reservations | amount_of_online_checkin | percentage_of_online_per_total_reservations |
+|-------------|----------------|-------|------------------------|--------------------------|---------------------------------------------|
+| Friday      | age_group      | 45    | 35                     | 6                        | 2.26                                        |
+| Monday      | age_group      | 35    | 51                     | 11                       | 4.15                                        |
+| Saturday    | age_group      | 25    | 24                     | 6                        | 2.26                                        |
+| Sunday      | age_group      | 55    | 14                     | 4                        | 1.51                                        |
+| Thursday    | age_group      | 35    | 49                     | 9                        | 3.40                                        |
+| Tuesday     | age_group      | 35    | 53                     | 9                        | 3.40                                        |
+| Wednesday   | age_group      | 35    | 39                     | 6                        | 2.26                                        |
+
 
 #### Amount of reservations and online checkins by `gender` per weekday:
 
-| created_day | dimension_type | value | amount_of_reservations | amount_of_online_checkin |
-|-------------|----------------|-------|------------------------|--------------------------|
-| Friday      | gender         | 1     | 163                    | 15                       |
-| Monday      | gender         | 1     | 239                    | 19                       |
-| Saturday    | gender         | 1     | 122                    | 14                       |
-| Sunday      | gender         | 1     | 115                    | 12                       |
-| Thursday    | gender         | 1     | 228                    | 18                       |
-| Tuesday     | gender         | 1     | 209                    | 21                       |
-| Wednesday   | gender         | 1     | 219                    | 20                       |
+| created_day | dimension_type | value | amount_of_reservations | amount_of_online_checkin | percentage_of_online_per_total_reservations |
+|-------------|----------------|-------|------------------------|--------------------------|---------------------------------------------|
+| Friday      | gender         | male  | 163                    | 15                       | 1.16                                        |
+| Monday      | gender         | male  | 239                    | 19                       | 1.47                                        |
+| Saturday    | gender         | male  | 122                    | 14                       | 1.08                                        |
+| Sunday      | gender         | male  | 115                    | 12                       | 0.93                                        |
+| Thursday    | gender         | male  | 228                    | 18                       | 1.39                                        |
+| Tuesday     | gender         | male  | 209                    | 21                       | 1.62                                        |
+| Wednesday   | gender         | male  | 219                    | 20                       | 1.54                                        |
+
 
 #### Amount of reservations and online checkins by `nationality` per weekday:
 
-| created_day | dimension_type   | value | amount_of_reservations | amount_of_online_checkin |
-|-------------|------------------|-------|------------------------|--------------------------|
-| Friday      | nationality_code | RU    | 9                      | 3                        |
-| Monday      | nationality_code | GB    | 42                     | 6                        |
-| Saturday    | nationality_code | US    | 29                     | 5                        |
-| Sunday      | nationality_code | GB    | 14                     | 2                        |
-| Thursday    | nationality_code | SE    | 6                      | 3                        |
-| Tuesday     | nationality_code | US    | 34                     | 5                        |
-| Wednesday   | nationality_code | US    | 33                     | 5                        |
+| created_day | dimension_type   | value | amount_of_reservations | amount_of_online_checkin | percentage_of_online_per_total_reservations |
+|-------------|------------------|-------|------------------------|--------------------------|---------------------------------------------|
+| Friday      | nationality_code | RU    | 9                      | 3                        | 1.59                                        |
+| Monday      | nationality_code | GB    | 42                     | 6                        | 3.17                                        |
+| Saturday    | nationality_code | US    | 29                     | 5                        | 2.65                                        |
+| Sunday      | nationality_code | GB    | 14                     | 2                        | 1.06                                        |
+| Thursday    | nationality_code | DE    | 28                     | 3                        | 1.59                                        |
+| Tuesday     | nationality_code | US    | 34                     | 5                        | 2.65                                        |
+| Wednesday   | nationality_code | US    | 33                     | 5                        | 2.65                                        |
+
 
 ---
 
