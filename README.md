@@ -107,12 +107,12 @@ Build the entire project to load `seeds`, `snapshots`, `models` and `tests` in *
 ```bash
 dbt seed
 ```
+```bash
+dbt build
+```
 
 ---
 
 ## 📊 Analysis
 
-The analyses can be found in the following markdown: (📊Analyses)[https://github.com/Daniel-hub-es/mews_interview_2025/blob/main/Analyses.md] 
-```bash
-dbt build
-```
+The analyses can be found in the following markdown: [📊Analyses](https://github.com/Daniel-hub-es/mews_interview_2025/blob/main/Analyses.md) 
