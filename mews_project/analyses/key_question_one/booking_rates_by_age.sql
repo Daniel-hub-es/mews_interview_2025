@@ -2,6 +2,8 @@ with
 
 	rates_age_group as (
 		select distinct on (age_group)
+			created_year_reservation,
+			month,
 			rate_name as popular_rate,
 			age_group,
 			sum(total_reservations) as popular_rate_reservations,
@@ -10,6 +12,8 @@ with
 					partition by age_group) as total_reservations
 		from fct__rate_popularity
 		group by
+			created_year_reservation,
+			month,
 			rate_name,
 			age_group,
 			total_reservations
@@ -18,6 +22,8 @@ with
 
 	calculations as (
 		select
+			created_year_reservation,
+			month,
 			popular_rate,
 			age_group,
 			popular_rate_reservations,

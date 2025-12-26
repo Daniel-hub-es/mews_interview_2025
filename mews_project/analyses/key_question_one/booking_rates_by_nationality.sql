@@ -2,6 +2,8 @@ with
 
 	rates_nationality as (
 		select distinct on (nationality_code)
+			created_year_reservation,
+			month,
 			rate_name as popular_rate,
 			case
 				when nationality_code is NULL
@@ -14,6 +16,8 @@ with
 					partition by nationality_code) as total_reservations
 		from fct__rate_popularity
 		group by
+			created_year_reservation,
+			month,
 			rate_name,
 			nationality_code,
 			total_reservations
@@ -22,6 +26,8 @@ with
 
 	calculations as (
 		select
+			created_year_reservation,
+			month,
 			popular_rate,
 			nationality_code,
 			popular_rate_reservations,
