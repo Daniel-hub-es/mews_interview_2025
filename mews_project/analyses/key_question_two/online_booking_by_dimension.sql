@@ -11,7 +11,7 @@ with
 	        age_group::varchar as value,
 	        sum(total_reservations) as amount_of_reservations,
 	        sum(total_online_checkin) as amount_of_online_checkin
-	    from fct__online_checkins
+	    from base
 	    group by age_group
 		order by amount_of_online_checkin desc
 		limit 1
@@ -19,11 +19,18 @@ with
 
 	gender as (
 		select
-	        'gender' as dimension_type,
-	        gender::varchar as value,
+			'gender' as dimension_type,
+	        case
+				when gender = 0
+				then 'undefined'
+				when gender = 1
+				then 'male'
+				when gender = 2
+				then 'female'
+			end as value,
 	        sum(total_reservations) as amount_of_reservations,
 	        sum(total_online_checkin) as amount_of_online_checkin
-	    from fct__online_checkins
+	    from base
 	    group by gender
 		order by amount_of_online_checkin desc
 		limit 1
@@ -35,13 +42,13 @@ with
 	        nationality_code::varchar as value,
 	        sum(total_reservations) as amount_of_reservations,
 	        sum(total_online_checkin) as amount_of_online_checkin
-	    from fct__online_checkins
+	    from base
 	    group by nationality_code
 		order by amount_of_online_checkin desc
 		limit 1
 	),
 
-	final as (
+	gathered as (
 		select *
 		from age_group
 
@@ -54,6 +61,17 @@ with
 
 		select *
 		from nationality
+	),
+
+	final_calculations as (
+		select
+			dimension_type,
+			value,
+			amount_of_reservations,
+			amount_of_online_checkin,
+			round(100.0 * amount_of_online_checkin / sum(amount_of_reservations) over(),
+			2 ) as percentage_of_online_per_total_reservations
+		from gathered
 	)
 
-select * from final
+select * from final_calculations
