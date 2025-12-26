@@ -13,3 +13,9 @@ models:
         data_tests:
           - not_null
           - unique
+      - name: week_number
+        description: "The ISO week number of the year."
+      - name: month
+        description: "The name of the month."
+      - name: year
+        description: "The year as a four-digit number."
