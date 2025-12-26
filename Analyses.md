@@ -1,5 +1,3 @@
----
-
 ## 📊 Analysis
 
 ### 1. SQL ad-hoc queries
