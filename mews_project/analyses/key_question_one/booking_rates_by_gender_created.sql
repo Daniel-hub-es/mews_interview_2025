@@ -3,7 +3,7 @@ with
 	rates_gender as (
 		select distinct on (gender)
 			created_year_reservation,
-			month,
+			created_month_reservation,
 			rate_name as popular_rate,
 			case
 				when gender = 0
@@ -20,7 +20,7 @@ with
 		from fct__rate_popularity
 		group by
 			created_year_reservation,
-			month,
+			created_month_reservation,
 			rate_name,
 			gender,
 			total_reservations
@@ -30,7 +30,7 @@ with
 	calculations as (
 		select
 			created_year_reservation,
-			month,
+			created_month_reservation,
 			popular_rate,
 			gender,
 			popular_rate_reservations,
