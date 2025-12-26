@@ -2,21 +2,27 @@ with
 
 	most_profitable as(
 		select
-			age_group,
-			avg(rev_per_capacity) as avg_revenue_per_capacity
+		    age_group,
+		    rate_name,
+		    round(avg(rev_per_capacity), 3) as avg_revenue_per_capacity
 		from fct__revenue
-		group by age_group
-		order by avg(rev_per_capacity) desc		
+		group by 
+		    age_group, 
+		    rate_name
+		order by avg_revenue_per_capacity desc
 		limit 1
 	),
 
 	least_profitable as(
 		select
-			age_group,
-			avg(rev_per_capacity) as avg_revenue_per_capacity
+		    age_group,
+		    rate_name,
+		    round(avg(rev_per_capacity), 3) as avg_revenue_per_capacity
 		from fct__revenue
-		group by age_group
-		order by avg(rev_per_capacity) asc		
+		group by 
+		    age_group, 
+		    rate_name
+		order by avg_revenue_per_capacity asc
 		limit 1
 	),
 
