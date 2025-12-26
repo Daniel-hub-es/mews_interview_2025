@@ -56,12 +56,25 @@ with
             -- the incremental gain by bookings * extra value per booking calculation to show extra revenue
             online_bookings * (avg_online_rev - avg_offline_rev) as online_projected_growth_revenue,
             -- percentage revenue growth calculation using online_projected_growth_revenue calculated before
-            round(
-                ((online_bookings * (avg_online_rev - avg_offline_rev) / total_revenue) * 100), 2
-            ) as percentage_revenue_growth,
+           
+                ((online_bookings * (avg_online_rev - avg_offline_rev) / total_revenue) * 100) as percentage_revenue_growth,
             -- sum existing revenue and the extra revenue from moving from lower spender to higher spender (online checkins)
             total_revenue + (online_bookings * (avg_online_rev - avg_offline_rev)) as projected_total_revenue
         from proposal_metrics
-    )
+    ),
     
-select * from calculated_diff
+	final as (
+		select
+			global_total_bookings,
+            online_bookings,
+			round(avg_online_rev, 3) as avg_online_rev,
+			round(avg_offline_rev, 3) as avg_offline_rev,
+			round(avg_revenue_diff, 3) as avg_revenue_diff,
+			round(current_total_revenue, 3) as current_total_revenue,
+			round(online_projected_growth_revenue, 3) as online_projected_growth_revenue,
+			round(percentage_revenue_growth, 2) as percentage_revenue_growth,
+			round(projected_total_revenue, 3) as projected_total_revenue
+		from calculated_diff
+	)
+
+select * from final
