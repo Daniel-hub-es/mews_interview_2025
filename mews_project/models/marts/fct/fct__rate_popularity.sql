@@ -4,25 +4,41 @@ with
         select *
         from {{ ref('int__reservations_rates') }}
     ),
+
+    calendar as (
+        select *
+        from {{ ref('dim__calendar') }}
+    ),
     
-    rate_popularity as (
+    final as (
     select
+		-- Year Date
+        created_utc,
+		cal.year as created_year_reservation,
+        cal.month,
+        cal.week_number,
         -- Dimensions
-        rate_name, 
-        age_group,
-        gender, 
-        nationality_code,
+        rr.rate_name, 
+        rr.age_group,
+        rr.gender, 
+        rr.nationality_code,
         -- Number of records
         count(*) as total_reservations
-    from reservations_rates
+    from reservations_rates rr
+	left join calendar cal
+	on cast(rr.created_utc as date) = cal.dates
     group by
         -- group by clause for the aggregation
         rate_name, 
         age_group,
         gender, 
-        nationality_code
+        nationality_code,
+		year,
+        month,
+        week_number,
+        created_utc
         -- order records from the greatest to the lowest amount
     order by total_reservations desc
     )
 
-select * from rate_popularity
+select * from final
