@@ -48,98 +48,102 @@ The following [ad-hoc sql queries](./mews_project/analyses/key_question_one) sho
 
 #### Popular booking rates by gender:
 
-| rate_name      | gender | booking_rate_volume |
-|----------------|--------|---------------------|
-| Fully Flexible | 0      | 8                   |
-| Fully Flexible | 1      | 156                 |
-| Fully Flexible | 2      | 73                  |
+| popular_rate    | gender    | popular_rate_reservations | percentage_pr | total_reservations | percentage_tr |
+|-----------------|-----------|---------------------------|---------------|--------------------|---------------|
+| Fully Flexible  | female    | 42                        | 6.36          | 360                | 1.68          |
+| Fully Flexible  | male      | 207                       | 31.36         | 1295               | 8.28          |
+| Early - 60 days | undefined | 411                       | 62.27         | 846                | 16.43         |
+
 
 #### Popular booking rates by age_group:
 
-| rate_name       | age_group | booking_rate_volume |
-|-----------------|-----------|---------------------|
-| Fully Flexible  | 0         | 57                  |
-| Fully Flexible  | 25        | 41                  |
-| Fully Flexible  | 35        | 43                  |
-| Fully Flexible  | 45        | 46                  |
-| Fully Flexible  | 55        | 34                  |
-| Fully Flexible  | 65        | 14                  |
-| Early - 21 days | 100       | 3                   |
+| popular_rate    | age_group | popular_rate_reservations | percentage_pr | total_reservations | percentage_tr |
+|-----------------|-----------|---------------------------|---------------|--------------------|---------------|
+| Early - 60 days | 0         | 411                       | 78.44         | 1520               | 16.43         |
+| Fully Flexible  | 25        | 24                        | 4.58          | 234                | 0.96          |
+| Fully Flexible  | 35        | 25                        | 4.77          | 279                | 1.00          |
+| Fully Flexible  | 45        | 27                        | 5.15          | 241                | 1.08          |
+| Fully Flexible  | 55        | 20                        | 3.82          | 146                | 0.80          |
+| Fully Flexible  | 65        | 14                        | 2.67          | 65                 | 0.56          |
+| Early - 21 days | 100       | 3                         | 0.57          | 16                 | 0.12          |
 
-#### Popular booking rates by nationality (avoiding `NULL` records):
 
-| rate_name             | nationality_code | booking_rate_volume |
-|-----------------------|------------------|---------------------|
-| Fully Flexible        | AE               | 2                   |
-| Min 3 nights          | AL               | 1                   |
-| Fully Flexible        | AR               | 2                   |
-| Fully Flexible        | AS               | 1                   |
-| Fully Flexible        | AT               | 4                   |
-| Fully Flexible        | AU               | 5                   |
-| Fully Flexible        | BE               | 5                   |
-| Fully Flexible        | BG               | 1                   |
-| Early - 60 days       | BH               | 1                   |
-| Fully Flexible        | BR               | 3                   |
-| Fully Flexible        | BY               | 2                   |
-| Fully Flexible        | CA               | 7                   |
-| Fully Flexible        | CH               | 6                   |
-| Fully Flexible        | CL               | 1                   |
-| Early - 21 days       | CN               | 8                   |
-| Min 4 nights          | CR               | 1                   |
-| Fully Flexible        | CZ               | 9                   |
-| Fully Flexible        | DE               | 11                  |
-| Fully Flexible        | DK               | 5                   |
-| Fully Flexible        | DO               | 2                   |
-| Fully Flexible        | EE               | 1                   |
-| Non Refundable BAR BB | ES               | 3                   |
-| Fully Flexible        | FI               | 1                   |
-| Fully Flexible        | FR               | 10                  |
-| Fully Flexible        | GB               | 13                  |
-| Min 3 nights          | GR               | 1                   |
-| Fully Flexible        | HK               | 3                   |
-| Fully Flexible        | HU               | 1                   |
-| Fully Flexible        | ID               | 1                   |
-| Fully Flexible        | IE               | 5                   |
-| Fully Flexible        | IL               | 6                   |
-| Fully Flexible        | IN               | 3                   |
-| Fully Flexible        | IQ               | 1                   |
-| Min 3 nights          | IR               | 1                   |
-| Fully Flexible        | IS               | 1                   |
-| Fully Flexible        | IT               | 9                   |
-| Fully Flexible        | JO               | 1                   |
-| Fully Flexible        | JP               | 4                   |
-| Fully Flexible        | KR               | 5                   |
-| Min 3 nights          | KW               | 2                   |
-| Fully Flexible        | LB               | 2                   |
-| Non Refundable BAR BB | LT               | 1                   |
-| Fully Flexible        | LU               | 3                   |
-| Fully Flexible        | MC               | 1                   |
-| Fully Flexible        | MT               | 1                   |
-| Fully Flexible        | MX               | 6                   |
-| Non Refundable BAR BB | MY               | 1                   |
-| Fully Flexible        | NL               | 7                   |
-| Fully Flexible        | NO               | 3                   |
-| Fully Flexible        | NZ               | 3                   |
-| Fully Flexible        | PE               | 1                   |
-| Early - 21 days       | PH               | 2                   |
-| Fully Flexible        | PL               | 3                   |
-| Fully Flexible        | PR               | 1                   |
-| Fully Flexible        | PT               | 1                   |
-| Min 4 nights          | QA               | 2                   |
-| Fully Flexible        | RO               | 1                   |
-| Fully Flexible        | RU               | 7                   |
-| Fully Flexible        | SA               | 3                   |
-| Fully Flexible        | SC               | 1                   |
-| Fully Flexible        | SE               | 6                   |
-| Early - 21 days       | SG               | 3                   |
-| Fully Flexible        | SK               | 10                  |
-| Min 3 nights          | SY               | 1                   |
-| Fully Flexible        | TH               | 3                   |
-| Fully Flexible        | TJ               | 1                   |
-| Fully Flexible        | TR               | 3                   |
-| Fully Flexible        | TW               | 2                   |
-| Fully Flexible        | UA               | 2                   |
-| Fully Flexible        | US               | 16                  |
+#### Popular booking rates by nationality:
+
+| popular_rate          | nationality_code | popular_rate_reservations | percentage_pr | total_reservations | percentage_tr |
+|-----------------------|------------------|---------------------------|---------------|--------------------|---------------|
+| Early - 60 days       | Unknown          | 411                       | 51.12         | 1096               | 16.43         |
+| Fully Flexible        | DE               | 54                        | 6.72          | 154                | 2.16          |
+| Fully Flexible        | GB               | 44                        | 5.47          | 187                | 1.76          |
+| Fully Flexible        | US               | 25                        | 3.11          | 243                | 1.00          |
+| Fully Flexible        | CN               | 21                        | 2.61          | 59                 | 0.84          |
+| Fully Flexible        | CZ               | 17                        | 2.11          | 67                 | 0.68          |
+| Fully Flexible        | RU               | 16                        | 1.99          | 51                 | 0.64          |
+| Fully Flexible        | SK               | 14                        | 1.74          | 72                 | 0.56          |
+| Fully Flexible        | FR               | 10                        | 1.24          | 46                 | 0.40          |
+| Fully Flexible        | IL               | 10                        | 1.24          | 39                 | 0.40          |
+| Early - 21 days       | NO               | 9                         | 1.12          | 17                 | 0.36          |
+| Fully Flexible        | IT               | 8                         | 1.00          | 48                 | 0.32          |
+| Early - 60 days       | TH               | 8                         | 1.00          | 16                 | 0.32          |
+| Fully Flexible        | ID               | 7                         | 0.87          | 7                  | 0.28          |
+| Fully Flexible        | IE               | 6                         | 0.75          | 10                 | 0.24          |
+| Fully Flexible        | NL               | 6                         | 0.75          | 23                 | 0.24          |
+| Fully Flexible        | SA               | 6                         | 0.75          | 15                 | 0.24          |
+| Non Refundable BAR BB | SE               | 6                         | 0.75          | 25                 | 0.24          |
+| Fully Flexible        | PL               | 6                         | 0.75          | 15                 | 0.24          |
+| Fully Flexible        | CA               | 6                         | 0.75          | 27                 | 0.24          |
+| Fully Flexible        | ES               | 5                         | 0.62          | 18                 | 0.20          |
+| Fully Flexible        | AU               | 5                         | 0.62          | 24                 | 0.20          |
+| Fully Flexible        | MX               | 5                         | 0.62          | 18                 | 0.20          |
+| Fully Flexible        | LU               | 4                         | 0.50          | 6                  | 0.16          |
+| Fully Flexible        | AT               | 4                         | 0.50          | 17                 | 0.16          |
+| Fully Flexible        | BE               | 4                         | 0.50          | 13                 | 0.16          |
+| Fully Flexible        | BR               | 4                         | 0.50          | 11                 | 0.16          |
+| Non Refundable BAR BB | CH               | 4                         | 0.50          | 18                 | 0.16          |
+| Min 4 nights          | QA               | 4                         | 0.50          | 6                  | 0.16          |
+| Fully Flexible        | DK               | 4                         | 0.50          | 13                 | 0.16          |
+| Fully Flexible        | PR               | 4                         | 0.50          | 4                  | 0.16          |
+| Fully Flexible        | IN               | 4                         | 0.50          | 10                 | 0.16          |
+| Fully Flexible        | KW               | 4                         | 0.50          | 8                  | 0.16          |
+| Fully Flexible        | AE               | 3                         | 0.37          | 9                  | 0.12          |
+| Fully Flexible        | HK               | 3                         | 0.37          | 5                  | 0.12          |
+| Fully Flexible        | JP               | 3                         | 0.37          | 11                 | 0.12          |
+| Fully Flexible        | KR               | 3                         | 0.37          | 15                 | 0.12          |
+| Early - 21 days       | SG               | 3                         | 0.37          | 10                 | 0.12          |
+| Fully Flexible        | TR               | 3                         | 0.37          | 4                  | 0.12          |
+| Early - 21 days       | PH               | 2                         | 0.25          | 3                  | 0.08          |
+| Fully Flexible        | RO               | 2                         | 0.25          | 3                  | 0.08          |
+| Fully Flexible        | NZ               | 2                         | 0.25          | 4                  | 0.08          |
+| Fully Flexible        | BY               | 2                         | 0.25          | 4                  | 0.08          |
+| Fully Flexible        | DO               | 2                         | 0.25          | 2                  | 0.08          |
+| Fully Flexible        | LB               | 2                         | 0.25          | 3                  | 0.08          |
+| Fully Flexible        | AR               | 2                         | 0.25          | 2                  | 0.08          |
+| Non Refundable BAR BB | TW               | 2                         | 0.25          | 7                  | 0.08          |
+| Fully Flexible        | UA               | 2                         | 0.25          | 3                  | 0.08          |
+| Fully Flexible        | PE               | 1                         | 0.12          | 1                  | 0.04          |
+| Fully Flexible        | EE               | 1                         | 0.12          | 1                  | 0.04          |
+| Fully Flexible        | PT               | 1                         | 0.12          | 1                  | 0.04          |
+| Min 3 nights          | IR               | 1                         | 0.12          | 1                  | 0.04          |
+| Fully Flexible        | CL               | 1                         | 0.12          | 1                  | 0.04          |
+| Fully Flexible        | SC               | 1                         | 0.12          | 1                  | 0.04          |
+| Early - 60 days       | BH               | 1                         | 0.12          | 2                  | 0.04          |
+| Non Refundable BAR BB | BG               | 1                         | 0.12          | 2                  | 0.04          |
+| Min 3 nights          | SY               | 1                         | 0.12          | 1                  | 0.04          |
+| Fully Flexible        | AS               | 1                         | 0.12          | 1                  | 0.04          |
+| Fully Flexible        | TJ               | 1                         | 0.12          | 1                  | 0.04          |
+| Min 3 nights          | AL               | 1                         | 0.12          | 1                  | 0.04          |
+| Fully Flexible        | IS               | 1                         | 0.12          | 2                  | 0.04          |
+| Fully Flexible        | JO               | 1                         | 0.12          | 1                  | 0.04          |
+| Min 4 nights          | CR               | 1                         | 0.12          | 1                  | 0.04          |
+| Non Refundable BAR BB | LT               | 1                         | 0.12          | 1                  | 0.04          |
+| Fully Flexible        | IQ               | 1                         | 0.12          | 1                  | 0.04          |
+| Fully Flexible        | MC               | 1                         | 0.12          | 1                  | 0.04          |
+| Fully Flexible        | MT               | 1                         | 0.12          | 2                  | 0.04          |
+| Fully Flexible        | HU               | 1                         | 0.12          | 3                  | 0.04          |
+| Fully Flexible        | MY               | 1                         | 0.12          | 3                  | 0.04          |
+| Min 3 nights          | GR               | 1                         | 0.12          | 1                  | 0.04          |
+| Early - 60 days       | FI               | 1                         | 0.12          | 3                  | 0.04          |
+
 
 ---
 
