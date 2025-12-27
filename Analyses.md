@@ -137,10 +137,11 @@ The following [ad-hoc sql queries](./mews_project/analyses/key_question_three) s
 
 #### Typical guesst that are most and least profitable:
 
-| age_group | gender | nationality_code | rate_name             | night_count | night_cost_sum | occupied_space_sum | guest_count_sum | rev_per_capacity |
-|-----------|--------|------------------|-----------------------|-------------|----------------|--------------------|-----------------|------------------|
-| 0         | male   | RU               | Fully Flexible        | 1           | 682.112        | 2                  | 2               | 341.056          |
-| 35        | female | GB               | Non Refundable BAR BB | 2           | 2.806          | 4                  | 2               | 0.701            |
+| Gender    | Age Group | Nationality Code | Total Reservations | Average Daily Rate | Average Length of Stay | Average Occupancy per Booking | Revenue per Space Unit | Profitability |
+|-----------|-----------|------------------|--------------------|--------------------|------------------------|-------------------------------|------------------------|---------------|
+| undefined | 0         | DE               | 55                 | 221.820            | 2.1                    | 2.9                           | 6377.323               | MOST          |
+| male      | 100       | SK               | 3                  | 26.679             | 2.3                    | 2.3                           | 13.339                 | LEAST         |
+
 
 
 #### Typical guesst that are most and least profitable by age:
