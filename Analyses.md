@@ -18,42 +18,38 @@ The following [ad-hoc sql queries](./mews_project/analyses/key_question_one) sho
 
 #### Popular booking rates by gender:
 
-| created_year_reservation | created_month_reservation | start_year_reservation | start_month_reservation | popular_rate    | gender    | popular_rate_reservations | percentage_pr | total_reservations | percentage_tr |
-|--------------------------|---------------------------|------------------------|-------------------------|-----------------|-----------|---------------------------|---------------|--------------------|---------------|
-| 2019                     | 8                         | 2019                   | 9                       | Fully Flexible  | female    | 18                        | 13.24         | 360                | 0.72          |
-| 2019                     | 8                         | 2019                   | 8                       | Fully Flexible  | male      | 42                        | 30.88         | 1295               | 1.68          |
-| 2019                     | 9                         | 2020                   | 4                       | Early - 60 days | undefined | 76                        | 55.88         | 846                | 3.04          |
-
+| Popular Rate    | Gender    | Reservations | Percentage of Popular Rate Reservations | Total Reservations | Percentage of popular Rate per Total Reservations |
+|-----------------|-----------|--------------|-----------------------------------------|--------------------|---------------------------------------------------|
+| Fully Flexible  | female    | 87           | 21.64%                                  | 360                | 3.48%                                             |
+| Fully Flexible  | male      | 239          | 59.45%                                  | 1295               | 9.56%                                             |
+| Early - 60 days | undefined | 76           | 18.91%                                  | 846                | 3.04%                                             |
 
 #### Popular booking rates by age_group:
 
-| created_year_reservation | created_month_reservation | start_year_reservation | start_month_reservation | popular_rate    | age_group | popular_rate_reservations | percentage_pr | total_reservations | percentage_tr |
-|--------------------------|---------------------------|------------------------|-------------------------|-----------------|-----------|---------------------------|---------------|--------------------|---------------|
-| 2019                     | 9                         | 2020                   | 4                       | Early - 60 days | 0         | 76                        | 54.68         | 1520               | 3.04          |
-| 2019                     | 9                         | 2019                   | 9                       | Fully Flexible  | 25        | 13                        | 9.35          | 234                | 0.52          |
-| 2019                     | 8                         | 2019                   | 8                       | Fully Flexible  | 35        | 14                        | 10.07         | 279                | 0.56          |
-| 2019                     | 9                         | 2019                   | 10                      | Fully Flexible  | 45        | 14                        | 10.07         | 241                | 0.56          |
-| 2019                     | 8                         | 2019                   | 9                       | Fully Flexible  | 55        | 14                        | 10.07         | 146                | 0.56          |
-| 2019                     | 9                         | 2019                   | 10                      | Fully Flexible  | 65        | 5                         | 3.60          | 65                 | 0.20          |
-| 2019                     | 9                         | 2019                   | 10                      | Early - 21 days | 100       | 3                         | 2.16          | 16                 | 0.12          |
-
-
+| Popular Rate    | Age Group | Reservations | Percentage of Popular Rate Reservations | Total Reservations | Percentage of popular Rate per Total Reservations |
+|-----------------|-----------|--------------|-----------------------------------------|--------------------|---------------------------------------------------|
+| Fully Flexible  | 0         | 124          | 36.15%                                  | 1520               | 4.96%                                             |
+| Fully Flexible  | 25        | 53           | 15.45%                                  | 234                | 2.12%                                             |
+| Fully Flexible  | 35        | 56           | 16.33%                                  | 279                | 2.24%                                             |
+| Fully Flexible  | 45        | 50           | 14.58%                                  | 241                | 2.00%                                             |
+| Fully Flexible  | 55        | 43           | 12.54%                                  | 146                | 1.72%                                             |
+| Fully Flexible  | 65        | 14           | 4.08%                                   | 65                 | 0.56%                                             |
+| Early - 21 days | 100       | 3            | 0.87%                                   | 16                 | 0.12%                                             |
 
 #### Popular booking rates by nationality (limited to 10 records):
 
-| created_year_reservation | created_month_reservation | start_year_reservation | start_month_reservation | popular_rate    | nationality_code | popular_rate_reservations | percentage_pr | total_reservations | percentage_tr |
-|--------------------------|---------------------------|------------------------|-------------------------|-----------------|------------------|---------------------------|---------------|--------------------|---------------|
-| 2019                     | 9                         | 2020                   | 4                       | Early - 60 days | Unknown          | 76                        | 25.50         | 1096               | 3.04          |
-| 2019                     | 9                         | 2020                   | 7                       | Fully Flexible  | GB               | 20                        | 6.71          | 187                | 0.80          |
-| 2019                     | 8                         | 2019                   | 11                      | Fully Flexible  | DE               | 15                        | 5.03          | 154                | 0.60          |
-| 2019                     | 8                         | 2019                   | 8                       | Fully Flexible  | US               | 12                        | 4.03          | 243                | 0.48          |
-| 2019                     | 8                         | 2020                   | 5                       | Fully Flexible  | CN               | 11                        | 3.69          | 59                 | 0.44          |
-| 2019                     | 8                         | 2020                   | 2                       | Fully Flexible  | CZ               | 8                         | 2.68          | 67                 | 0.32          |
-| 2019                     | 8                         | 2020                   | 4                       | Early - 60 days | TH               | 8                         | 2.68          | 16                 | 0.32          |
-| 2019                     | 9                         | 2019                   | 10                      | Early - 21 days | NO               | 6                         | 2.01          | 17                 | 0.24          |
-| 2019                     | 9                         | 2019                   | 10                      | Fully Flexible  | ID               | 6                         | 2.01          | 7                  | 0.24          |
-| 2019                     | 8                         | 2019                   | 8                       | Fully Flexible  | RU               | 6                         | 2.01          | 51                 | 0.24          |
-
+| Popular Rate    | Nationality | Reservations | Percentage of Popular Rate Reservations | Total Reservations | Percentage of popular Rate per Total Reservations |
+|-----------------|-------------|--------------|-----------------------------------------|--------------------|---------------------------------------------------|
+| Early - 60 days | Unknown     | 76           | 16.63%                                  | 1096               | 3.04%                                             |
+| Fully Flexible  | GB          | 40           | 8.75%                                   | 187                | 1.60%                                             |
+| Fully Flexible  | DE          | 26           | 5.69%                                   | 154                | 1.04%                                             |
+| Fully Flexible  | US          | 26           | 5.69%                                   | 243                | 1.04%                                             |
+| Fully Flexible  | IT          | 15           | 3.28%                                   | 48                 | 0.60%                                             |
+| Fully Flexible  | FR          | 14           | 3.06%                                   | 46                 | 0.56%                                             |
+| Fully Flexible  | CZ          | 14           | 3.06%                                   | 67                 | 0.56%                                             |
+| Fully Flexible  | SK          | 14           | 3.06%                                   | 72                 | 0.56%                                             |
+| Fully Flexible  | RU          | 12           | 2.63%                                   | 51                 | 0.48%                                             |
+| Fully Flexible  | CN          | 11           | 2.41%                                   | 59                 | 0.44%                                             |
 
 ---
 
