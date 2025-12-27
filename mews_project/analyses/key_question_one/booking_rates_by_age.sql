@@ -36,7 +36,7 @@ with
 			popular_rate_reservations as "Reservations",
 			cast(percentage_pr as varchar) || '%' as "Percentage of Popular Rate Reservations",
 			total_reservations as "Total Reservations",
-			cast(percentage_tr as varchar) || '%' as "Percentage of popular Rate per Total Reservations"
+			cast(percentage_tr as varchar) || '%' as "Percentage of Popular Rate per Total Reservations"
 		from calculations
 	)
 
