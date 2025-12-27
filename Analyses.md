@@ -18,7 +18,7 @@ The following [ad-hoc sql queries](./mews_project/analyses/key_question_one) sho
 
 #### Popular booking rates by gender:
 
-| Popular Rate    | Gender    | Reservations | Percentage of Popular Rate Reservations | Total Reservations | Percentage of popular Rate per Total Reservations |
+| Popular Rate    | Gender    | Reservations | Percentage of Popular Rate Reservations | Total Reservations | Percentage of Popular Rate per Total Reservations |
 |-----------------|-----------|--------------|-----------------------------------------|--------------------|---------------------------------------------------|
 | Fully Flexible  | female    | 87           | 21.64%                                  | 360                | 3.48%                                             |
 | Fully Flexible  | male      | 239          | 59.45%                                  | 1295               | 9.56%                                             |
@@ -26,7 +26,7 @@ The following [ad-hoc sql queries](./mews_project/analyses/key_question_one) sho
 
 #### Popular booking rates by age_group:
 
-| Popular Rate    | Age Group | Reservations | Percentage of Popular Rate Reservations | Total Reservations | Percentage of popular Rate per Total Reservations |
+| Popular Rate    | Age Group | Reservations | Percentage of Popular Rate Reservations | Total Reservations | Percentage of Popular Rate per Total Reservations |
 |-----------------|-----------|--------------|-----------------------------------------|--------------------|---------------------------------------------------|
 | Fully Flexible  | 0         | 124          | 36.15%                                  | 1520               | 4.96%                                             |
 | Fully Flexible  | 25        | 53           | 15.45%                                  | 234                | 2.12%                                             |
@@ -38,7 +38,7 @@ The following [ad-hoc sql queries](./mews_project/analyses/key_question_one) sho
 
 #### Popular booking rates by nationality (limited to 10 records):
 
-| Popular Rate    | Nationality | Reservations | Percentage of Popular Rate Reservations | Total Reservations | Percentage of popular Rate per Total Reservations |
+| Popular Rate    | Nationality | Reservations | Percentage of Popular Rate Reservations | Total Reservations | Percentage of Popular Rate per Total Reservations |
 |-----------------|-------------|--------------|-----------------------------------------|--------------------|---------------------------------------------------|
 | Early - 60 days | Unknown     | 76           | 16.63%                                  | 1096               | 3.04%                                             |
 | Fully Flexible  | GB          | 40           | 8.75%                                   | 187                | 1.60%                                             |
@@ -69,7 +69,7 @@ The following [ad-hoc sql queries](./mews_project/analyses/key_question_two) sho
 
 #### Typical guest who do online checkins:
 
-| age_group | gender | nationality_code | amount_of_online_checkin |
+| Age Group | Gender | Nationality | Online checkins |
 |-----------|--------|------------------|--------------------------|
 | 35        | male   | GB               | 8                        |
 
