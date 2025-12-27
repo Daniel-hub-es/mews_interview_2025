@@ -16,7 +16,7 @@ limit 20;
 
 The following [ad-hoc sql queries](./mews_project/analyses/key_question_one) shows the popular **booking rates** for the diferent dimensions (`age_group`, `gender` and `nationality_code`). 
 
-#### Popular booking rates by gender:
+#### Popular booking rates by `gender`:
 
 | Popular Rate    | Gender    | Reservations | Percentage of Popular Rate Reservations | Total Reservations | Percentage of Popular Rate per Total Reservations |
 |-----------------|-----------|--------------|-----------------------------------------|--------------------|---------------------------------------------------|
@@ -24,7 +24,7 @@ The following [ad-hoc sql queries](./mews_project/analyses/key_question_one) sho
 | Fully Flexible  | male      | 239          | 59.45%                                  | 1295               | 9.56%                                             |
 | Early - 60 days | undefined | 76           | 18.91%                                  | 846                | 3.04%                                             |
 
-#### Popular booking rates by age_group:
+#### Popular booking rates by `age_group`:
 
 | Popular Rate    | Age Group | Reservations | Percentage of Popular Rate Reservations | Total Reservations | Percentage of Popular Rate per Total Reservations |
 |-----------------|-----------|--------------|-----------------------------------------|--------------------|---------------------------------------------------|
@@ -36,7 +36,7 @@ The following [ad-hoc sql queries](./mews_project/analyses/key_question_one) sho
 | Fully Flexible  | 65        | 14           | 4.08%                                   | 65                 | 0.56%                                             |
 | Early - 21 days | 100       | 3            | 0.87%                                   | 16                 | 0.12%                                             |
 
-#### Popular booking rates by nationality (limited to 10 records):
+#### Popular booking rates by `nationality` (limited to 10 records):
 
 | Popular Rate    | Nationality | Reservations | Percentage of Popular Rate Reservations | Total Reservations | Percentage of Popular Rate per Total Reservations |
 |-----------------|-------------|--------------|-----------------------------------------|--------------------|---------------------------------------------------|
@@ -117,8 +117,6 @@ The following [ad-hoc sql queries](./mews_project/analyses/key_question_two) sho
 | Thursday    | Nationality    | DE    | 28                 | 3               | 10.34%                        | 1.59%                                                |
 | Sunday      | Nationality    | GB    | 14                 | 2               | 6.90%                         | 1.06%                                                |
 
-
-
 ---
 
 #### 3) Look at the average night revenue per single occupied capacity. What guest segment is the most profitable per occupied space unit? And what guest segment is the least profitable?
@@ -142,32 +140,26 @@ The following [ad-hoc sql queries](./mews_project/analyses/key_question_three) s
 | undefined | 0         | DE               | 55                 | 221.820            | 2.1                    | 2.9                           | 6377.323               | MOST          |
 | male      | 100       | SK               | 3                  | 26.679             | 2.3                    | 2.3                           | 13.339                 | LEAST         |
 
+#### Typical guesst that are most and least profitable by `gender`:
 
+| Gender    | Total Reservations | Average Daily Rate | Average Length of Stay | Average Occupancy per Booking | Revenue per Space Unit | Profitability |
+|-----------|--------------------|--------------------|------------------------|-------------------------------|------------------------|---------------|
+| undefined | 846                | 165.051            | 2.7                    | 4.3                           | 155.743                | MOST          |
+| female    | 360                | 192.239            | 2.4                    | 4.2                           | 90.622                 | LEAST         |
 
-#### Typical guesst that are most and least profitable by age:
+#### Typical guesst that are most and least profitable by `age`:
 
-| age_group | rate_name    | avg_revenue_per_capacity |
-|-----------|--------------|--------------------------|
-| 55        | Suite Offer  | 138.443                  |
-| 65        | Min 5 nights | 8.859                    |
+| Age Group | Total Reservations | Average Daily Rate | Average Length of Stay | Average Occupancy per Booking | Revenue per Space Unit | Profitability |
+|-----------|--------------------|--------------------|------------------------|-------------------------------|------------------------|---------------|
+| 0         | 1520               | 183.704            | 2.8                    | 4.8                           | 144.872                | MOST          |
+| 65        | 65                 | 126.777            | 3.2                    | 4.4                           | 59.445                 | LEAST         |
 
-#### Typical guesst that are most and least profitable by gender:
+#### Typical guesst that are most and least profitable by `nationality`:
 
-| gender    | rate_name    | avg_revenue_per_capacity |
-|-----------|--------------|--------------------------|
-| male      | Suite Offer  | 156.247                  |
-| undefined | Min 3 nights | 13.083                   |
-
-
-
-#### Typical guesst that are most and least profitable by nationality:
-
-| coalesce | rate_name       | avg_revenue_per_capacity |
-|----------|-----------------|--------------------------|
-| DK       | Early - 21 days | 246.473                  |
-| AS       | Fully Flexible  | 0.000                    |
-
-
+| Nationality Code | Total Reservations | Average Daily Rate | Average Length of Stay | Average Occupancy per Booking | Revenue per Space Unit | Profitability |
+|------------------|--------------------|--------------------|------------------------|-------------------------------|------------------------|---------------|
+| ID               | 7                  | 211.736            | 2.0                    | 3.1                           | 741.076                | MOST          |
+| AL               | 1                  | 73.227             | 3.0                    | 6.0                           | 36.613                 | LEAST         |
 
 ---
 
