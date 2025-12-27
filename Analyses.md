@@ -128,6 +128,14 @@ The following [ad-hoc sql queries](./mews_project/analyses/key_question_two) sho
 |-----------|--------|------------------|--------------------------|
 | 35        | male   | GB               | 8                        |
 
+The table above shows the profile crossing the dimensions of `Age Group`, `Gender` and `Nationality` that makes more online checkins compared to the rest of the guests of the datased given. 
+
+It shows a male in the middle age from Great Britain. The concentration arround this segment suggest that the typical user is an early adpoter of online checkin technologies as first solution for comodity compared to the rest of mid users that we have data available. 
+
+Information suggest that a male arround age between 25 and 35 would be considered as a "Milennial" or "Gen Z", generations of digital natives who will consider the use of technology in their behavior when checking in online at the establishment.
+
+This profile can be used as the target for the marketing strategies where the Hotel need to invest if they want to promote the usage of online checkins as it reports more protif in average compared to the offline checkin. 
+
 #### Amount of reservations and online checkins by dimension:
 
 | Dimension Type | Value | Total Reservations | Online Checkins | Percentage of Online Checkins | Percentage of Online Checkins per Total Reservations |
@@ -135,6 +143,14 @@ The following [ad-hoc sql queries](./mews_project/analyses/key_question_two) sho
 | Age Group      | 35    | 279                | 47              | 24.61%                        | 2.59%                                                |
 | Gender         | male  | 1295               | 119             | 62.30%                        | 6.55%                                                |
 | Nationality    | US    | 243                | 25              | 13.09%                        | 1.38%                                                |
+
+If we consider the dimensions separately, the result is similar:
+
+- The predominant age group continue to be the segment of Age between 25 and 35.
+  
+- The predomintant gender continue to be a male
+  
+- The nationality is the US. If we compare it with the table presented above, we see that the language and part of the culture are common to both.
 
 #### Amount of reservations and online checkins by `gender` per weekday:
 
@@ -146,7 +162,13 @@ The following [ad-hoc sql queries](./mews_project/analyses/key_question_two) sho
 | Thursday    | Gender         | male  | 228                | 18              | 15.13%                        | 1.39%                                                |
 | Friday      | Gender         | male  | 163                | 15              | 12.61%                        | 1.16%                                                |
 | Saturday    | Gender         | male  | 122                | 14              | 11.76%                        | 1.08%                                                |
-| Sunday      | Gender         | male  | 115                | 12              | 10.08%                        | 0.93%                                                
+| Sunday      | Gender         | male  | 115                | 12              | 10.08%                        | 0.93%                                                ç
+
+In the stacked bar chart below is represented the distribution of the guest who do more online checkins online checkins per weekday by the gender of the guest:
+
+<img width="763" height="452" alt="image" src="https://github.com/user-attachments/assets/7bbec2af-82cf-40ce-8fc7-2600aed1482f" />
+
+As mentioned previously, if we split online reservations by weekdays by gender to compare, the result shows that the male is the gender that do more online checkins every weekday. 
 
 #### Amount of reservations and online checkins by `age_group` per weekday:
 
@@ -160,6 +182,22 @@ The following [ad-hoc sql queries](./mews_project/analyses/key_question_two) sho
 | Friday      | Age Group      | 45    | 35                 | 6               | 11.76%                        | 2.26%                                                |
 | Sunday      | Age Group      | 55    | 14                 | 4               | 7.84%                         | 1.51%                                                |
 
+In the stacked bar chart below is represented the distribution of the guest who do more online checkins  per weekday by the Age Group of the guest:
+
+<img width="738" height="434" alt="image" src="https://github.com/user-attachments/assets/92ceb15a-133a-43bc-b766-a4e866cf29a1" />
+
+By age, behavior varies by day of the week:
+
+- From Monday to Thursday, behavior is significant for digital adopters aged 25 to 35, and the number of online reservations is remarkably consistent.
+  
+- Fridays the Ageage group rises from 35 to 45.
+
+- On Saturdays, the digital leadership shifts to a younger demographic from 0 to 25, although with a lower volume.
+
+- On Sundays, the preference shifts to an older demographic from 45 to 55, which shows the lowest relative volume
+
+- The "Percentage of Online Checkins per Total Reservations" column shows that the Monday/Age 35 segment is the single most important contributor to the hotel's total digital pipeline.
+
 #### Amount of reservations and online checkins by `nationality` per weekday:
 
 | Day of Week | Dimension Type | Value | Total Reservations | Online Checkins | Percentage of Online Checkins | Percentage of Online Checkins per Total Reservations |
@@ -171,6 +209,18 @@ The following [ad-hoc sql queries](./mews_project/analyses/key_question_two) sho
 | Friday      | Nationality    | RU    | 9                  | 3               | 10.34%                        | 1.59%                                                |
 | Thursday    | Nationality    | DE    | 28                 | 3               | 10.34%                        | 1.59%                                                |
 | Sunday      | Nationality    | GB    | 14                 | 2               | 6.90%                         | 1.06%                                                |
+
+In the stacked bar chart below is represented the distribution of the guest who do more online checkins per weekday by the nationality of the guest:
+
+<img width="738" height="449" alt="image" src="https://github.com/user-attachments/assets/fd523b78-b9d3-439d-b645-4dbf2137e26a" />
+
+- Just like in the age analysis, Monday is the peak day for digital adoption. Guests from Great Britain (GB) lead this trend as it was seen in analyses mentioned before.
+
+- This reinforces that the "Typical Guest" (British, Age from 25 to 35, Male) is most active at the beginning of the week.
+
+- The US market shows remarkable consistency in digital behavior, maintaining a steady volume of online checkins.
+
+- unday remains the day with the lowest digital engagement, This shows that weekend bookings tend to be less than beggining of the week online bookings.
 
 ---
 
