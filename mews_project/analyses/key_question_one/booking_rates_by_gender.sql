@@ -2,10 +2,6 @@ with
 
 	rates_gender as (
 		select distinct on (gender)
-			created_year_reservation,
-			created_month_reservation,
-			start_year_reservation,
-			start_month_reservation,
 			rate_name as popular_rate,
 			case
 				when gender = 0
@@ -21,10 +17,6 @@ with
 					partition by gender) as total_reservations
 		from fct__rate_popularity
 		group by
-			created_year_reservation,
-			created_month_reservation,
-			start_year_reservation,
-			start_month_reservation,
 			rate_name,
 			gender,
 			total_reservations
@@ -33,10 +25,6 @@ with
 
 	calculations as (
 		select
-			created_year_reservation,
-			created_month_reservation,
-			start_year_reservation,
-			start_month_reservation,
 			popular_rate,
 			gender,
 			popular_rate_reservations,
@@ -46,6 +34,17 @@ with
 			round(100.0 * popular_rate_reservations / sum(total_reservations) over(),
 			2 ) as percentage_tr 
 		from rates_gender
+	),
+
+	final as (
+		select
+			popular_rate as "Popular Rate",
+			gender as "Gender",
+			popular_rate_reservations as "Reservations",
+			cast(percentage_pr as varchar) || '%' as "Percentage of Popular Rate Reservations",
+			total_reservations as "Total Reservations",
+			cast(percentage_tr as varchar) || '%' as "Percentage of popular Rate per Total Reservations"
+		from calculations
 	)
 
-select * from calculations
+select * from final

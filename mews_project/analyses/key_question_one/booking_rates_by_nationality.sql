@@ -2,10 +2,6 @@ with
 
 	rates_nationality as (
 		select distinct on (nationality_code)
-			created_year_reservation,
-			created_month_reservation,
-			start_year_reservation,
-			start_month_reservation,
 			rate_name as popular_rate,
 			case
 				when nationality_code is NULL
@@ -18,10 +14,6 @@ with
 					partition by nationality_code) as total_reservations
 		from fct__rate_popularity
 		group by
-			created_year_reservation,
-			created_month_reservation,
-			start_year_reservation,
-			start_month_reservation,
 			rate_name,
 			nationality_code,
 			total_reservations
@@ -30,10 +22,6 @@ with
 
 	calculations as (
 		select
-			created_year_reservation,
-			created_month_reservation,
-			start_year_reservation,
-			start_month_reservation,
 			popular_rate,
 			nationality_code,
 			popular_rate_reservations,
@@ -43,7 +31,18 @@ with
 			round(100.0 * popular_rate_reservations / sum(total_reservations) over(),
 			2 ) as percentage_tr 
 		from rates_nationality
+	),
+
+	final as (
+		select
+			popular_rate as "Popular Rate",
+			nationality_code as "Nationality",
+			popular_rate_reservations as "Reservations",
+			cast(percentage_pr as varchar) || '%' as "Percentage of Popular Rate Reservations",
+			total_reservations as "Total Reservations",
+			cast(percentage_tr as varchar) || '%' as "Percentage of popular Rate per Total Reservations"
+		from calculations
+		order by popular_rate_reservations desc
 	)
 
-select * from calculations
-order by popular_rate_reservations desc
+select * from final
