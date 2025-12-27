@@ -178,7 +178,6 @@ The following table shows the difference between the average online revenue and 
 
 Based on the assumption of what will happen if overall usage of online checkin is doubled, we have taken a number of guests equal to the current online checkins (N=148) and  move them from offline to online. The growth is calculated as `(148) guests x avg difference (117.826)` and sum it up to the actual total revenue, obtaining the `projected_total_revenue` thas is an increase of `1.41%` of `revenue_growth`.
 
-| global_total_bookings | online_bookings | avg_online_rev | avg_offline_rev | avg_revenue_diff | current_total_revenue | online_projected_growth_revenue | percentage_revenue_growth | projected_total_revenue |
-|-----------------------|-----------------|----------------|-----------------|------------------|-----------------------|---------------------------------|---------------------------|-------------------------|
-| 2501                  | 148             | 605.217        | 487.390         | 117.826          | 1236401.224           | 17438.293                       | 1.41                      | 1253839.517             |
-
+| Total Bookings | Online Bookings | Avg Online Total Stay | Avg Offline Total Stay | Revenue Lift per Stay | Online Average Daily Rate | Offline Average Daily Rate | Average Daily Rate Difference | Current Total Revenue | Projected Revenue Lift | Growth % | Projected Total Revenue |
+|----------------|-----------------|-----------------------|------------------------|-----------------------|---------------------------|----------------------------|-------------------------------|-----------------------|------------------------|----------|-------------------------|
+| 2501           | 148             | 605.22                | 487.39                 | 117.83                | 230.86                    | 183.85                     | 47.01                         | 1236401.22            | 17438.29               | 1.41%    | 1253839.52              |
