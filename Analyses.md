@@ -1,8 +1,10 @@
 ## 📊 Analysis
 
-### 1. SQL ad-hoc queries
+The following analysis was performed to answer the business key questions addressed for the interview as a Data Analyst for Mews Company. An investigation was performed into patterns, digital adoptions and profitability segments from the `.csv` files (`rates` and `reservations`) given by the company. This analysis leverages dbt for data modeling, SQL for behavioral analytics, and Power BI for charts and storytelling.
 
-#### 1) What are the popular choices of booking rates (table `rate`, columns `ShortRateName` or `RateName`) for different segments of customers (table `reservation`, columns `AgeGroup`, `Gender`, `NationalityCode`)?
+The content will be divided by the questions adressed.
+
+### 1) What are the popular choices of booking rates (table `rate`, columns `ShortRateName` or `RateName`) for different segments of customers (table `reservation`, columns `AgeGroup`, `Gender`, `NationalityCode`)?
 
 For this analysis, we have created a fct table called `fct__rate_popularity` from the intermediate model `int__reservations_rates` where we have joined the tables `rate` and `reservation` as a denormalization process to avoid multiple joins in the **mart** layer.
 
@@ -53,7 +55,7 @@ The following [ad-hoc sql queries](./mews_project/analyses/key_question_one) sho
 
 ---
 
-#### 2) What are the typical guests who do online check-in? Is it somehow different when you compare reservations created across different weekdays (table `reservation`, `IsOnlineCheckin` column)?
+### 2) What are the typical guests who do online check-in? Is it somehow different when you compare reservations created across different weekdays (table `reservation`, `IsOnlineCheckin` column)?
 
 For this analysis, we have created a fct table called `fct__online_checkins` from the intermediate model `int__reservations_rates` joining it with `dim__calendar` table be able to make the comparasion across different weekdays in the **mart layer**:
 
@@ -119,7 +121,7 @@ The following [ad-hoc sql queries](./mews_project/analyses/key_question_two) sho
 
 ---
 
-#### 3) Look at the average night revenue per single occupied capacity. What guest segment is the most profitable per occupied space unit? And what guest segment is the least profitable?
+### 3) Look at the average night revenue per single occupied capacity. What guest segment is the most profitable per occupied space unit? And what guest segment is the least profitable?
 
 For this analysis, we have created a fct table called `fct__revenue` from the intermediate model `int__reservations_rates` to know wich is the most and least profitable guest segment pero occupied space unit in **mart layer**:
 
@@ -163,7 +165,7 @@ The following [ad-hoc sql queries](./mews_project/analyses/key_question_three) s
 
 ---
 
-#### 4) Bonus: As a bonus assignment, we want to motivate our hotels to promote online checkin and we want to give them some hard data. Look at the data and your analysis again and estimate what would be the impact on total room revenue if the overall usage of online checkin doubled.
+### 4) Bonus: As a bonus assignment, we want to motivate our hotels to promote online checkin and we want to give them some hard data. Look at the data and your analysis again and estimate what would be the impact on total room revenue if the overall usage of online checkin doubled.
 
 For this analysis, we have created a fct table called `fct__checkins_growth` from the intermediate model `int__reservations_rates` and create calculations to show actual revenua and possible growth on revenue based on the growth of online checkins in the **mart layer**:
 
