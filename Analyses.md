@@ -75,11 +75,12 @@ The following [ad-hoc sql queries](./mews_project/analyses/key_question_two) sho
 
 #### Amount of reservations and online checkins by dimension:
 
-| dimension_type   | value | amount_of_reservations | amount_of_online_checkin | percentage_of_online_per_total_reservations |
-|------------------|-------|------------------------|--------------------------|---------------------------------------------|
-| age_group        | 35    | 279                    | 47                       | 2.59                                        |
-| gender           | male  | 1295                   | 119                      | 6.55                                        |
-| nationality_code | US    | 243                    | 25                       | 1.38                                        |
+| Dimension Type | Value | Total Reservations | Online Checkins | Percentage of Online Checkins | Percentage of Online Checkins per Total Reservations |
+|----------------|-------|--------------------|-----------------|-------------------------------|------------------------------------------------------|
+| Age Group      | 35    | 279                | 47              | 24.61%                        | 2.59%                                                |
+| Gender         | male  | 1295               | 119             | 62.30%                        | 6.55%                                                |
+| Nationality    | US    | 243                | 25              | 13.09%                        | 1.38%                                                |
+
 
 
 #### Amount of reservations and online checkins by `age_group` per weekday:
