@@ -76,7 +76,7 @@ with
         from proposal_metrics
     ),
     
-    -- STEP 5: Final formatting with clear business-ready names
+    -- Final formatting with clear names
     final as (
         select
             global_total_bookings as "Total Bookings",
