@@ -81,7 +81,17 @@ The following [ad-hoc sql queries](./mews_project/analyses/key_question_two) sho
 | Gender         | male  | 1295               | 119             | 62.30%                        | 6.55%                                                |
 | Nationality    | US    | 243                | 25              | 13.09%                        | 1.38%                                                |
 
+#### Amount of reservations and online checkins by `gender` per weekday:
 
+| Day of Week | Dimension Type | Value | Total Reservations | Online Checkins | Percentage of Online Checkins | Percentage of Online Checkins per Total Reservations |
+|-------------|----------------|-------|--------------------|-----------------|-------------------------------|------------------------------------------------------|
+| Tuesday     | gender         | male  | 209                | 21              | 17.65%                        | 1.62%                                                |
+| Wednesday   | gender         | male  | 219                | 20              | 16.81%                        | 1.54%                                                |
+| Monday      | gender         | male  | 239                | 19              | 15.97%                        | 1.47%                                                |
+| Thursday    | gender         | male  | 228                | 18              | 15.13%                        | 1.39%                                                |
+| Friday      | gender         | male  | 163                | 15              | 12.61%                        | 1.16%                                                |
+| Saturday    | gender         | male  | 122                | 14              | 11.76%                        | 1.08%                                                |
+| Sunday      | gender         | male  | 115                | 12              | 10.08%                        | 0.93%                                                |
 
 #### Amount of reservations and online checkins by `age_group` per weekday:
 
@@ -94,20 +104,6 @@ The following [ad-hoc sql queries](./mews_project/analyses/key_question_two) sho
 | Thursday    | age_group      | 35    | 49                     | 9                        | 3.40                                        |
 | Tuesday     | age_group      | 35    | 53                     | 9                        | 3.40                                        |
 | Wednesday   | age_group      | 35    | 39                     | 6                        | 2.26                                        |
-
-
-#### Amount of reservations and online checkins by `gender` per weekday:
-
-| created_day | dimension_type | value | amount_of_reservations | amount_of_online_checkin | percentage_of_online_per_total_reservations |
-|-------------|----------------|-------|------------------------|--------------------------|---------------------------------------------|
-| Friday      | gender         | male  | 163                    | 15                       | 1.16                                        |
-| Monday      | gender         | male  | 239                    | 19                       | 1.47                                        |
-| Saturday    | gender         | male  | 122                    | 14                       | 1.08                                        |
-| Sunday      | gender         | male  | 115                    | 12                       | 0.93                                        |
-| Thursday    | gender         | male  | 228                    | 18                       | 1.39                                        |
-| Tuesday     | gender         | male  | 209                    | 21                       | 1.62                                        |
-| Wednesday   | gender         | male  | 219                    | 20                       | 1.54                                        |
-
 
 #### Amount of reservations and online checkins by `nationality` per weekday:
 
