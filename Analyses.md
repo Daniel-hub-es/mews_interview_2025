@@ -85,37 +85,38 @@ The following [ad-hoc sql queries](./mews_project/analyses/key_question_two) sho
 
 | Day of Week | Dimension Type | Value | Total Reservations | Online Checkins | Percentage of Online Checkins | Percentage of Online Checkins per Total Reservations |
 |-------------|----------------|-------|--------------------|-----------------|-------------------------------|------------------------------------------------------|
-| Tuesday     | gender         | male  | 209                | 21              | 17.65%                        | 1.62%                                                |
-| Wednesday   | gender         | male  | 219                | 20              | 16.81%                        | 1.54%                                                |
-| Monday      | gender         | male  | 239                | 19              | 15.97%                        | 1.47%                                                |
-| Thursday    | gender         | male  | 228                | 18              | 15.13%                        | 1.39%                                                |
-| Friday      | gender         | male  | 163                | 15              | 12.61%                        | 1.16%                                                |
-| Saturday    | gender         | male  | 122                | 14              | 11.76%                        | 1.08%                                                |
-| Sunday      | gender         | male  | 115                | 12              | 10.08%                        | 0.93%                                                |
+| Tuesday     | Gender         | male  | 209                | 21              | 17.65%                        | 1.62%                                                |
+| Wednesday   | Gender         | male  | 219                | 20              | 16.81%                        | 1.54%                                                |
+| Monday      | Gender         | male  | 239                | 19              | 15.97%                        | 1.47%                                                |
+| Thursday    | Gender         | male  | 228                | 18              | 15.13%                        | 1.39%                                                |
+| Friday      | Gender         | male  | 163                | 15              | 12.61%                        | 1.16%                                                |
+| Saturday    | Gender         | male  | 122                | 14              | 11.76%                        | 1.08%                                                |
+| Sunday      | Gender         | male  | 115                | 12              | 10.08%                        | 0.93%                                                
 
 #### Amount of reservations and online checkins by `age_group` per weekday:
 
-| created_day | dimension_type | value | amount_of_reservations | amount_of_online_checkin | percentage_of_online_per_total_reservations |
-|-------------|----------------|-------|------------------------|--------------------------|---------------------------------------------|
-| Friday      | age_group      | 45    | 35                     | 6                        | 2.26                                        |
-| Monday      | age_group      | 35    | 51                     | 11                       | 4.15                                        |
-| Saturday    | age_group      | 25    | 24                     | 6                        | 2.26                                        |
-| Sunday      | age_group      | 55    | 14                     | 4                        | 1.51                                        |
-| Thursday    | age_group      | 35    | 49                     | 9                        | 3.40                                        |
-| Tuesday     | age_group      | 35    | 53                     | 9                        | 3.40                                        |
-| Wednesday   | age_group      | 35    | 39                     | 6                        | 2.26                                        |
+| Day of Week | Dimension Type | Value | Total Reservations | Online Checkins | Percentage of Online Checkins | Percentage of Online Checkins per Total Reservations |
+|-------------|----------------|-------|--------------------|-----------------|-------------------------------|------------------------------------------------------|
+| Monday      | Age Group      | 35    | 51                 | 11              | 21.57%                        | 4.15%                                                |
+| Thursday    | Age Group      | 35    | 49                 | 9               | 17.65%                        | 3.40%                                                |
+| Tuesday     | Age Group      | 35    | 53                 | 9               | 17.65%                        | 3.40%                                                |
+| Wednesday   | Age Group      | 35    | 39                 | 6               | 11.76%                        | 2.26%                                                |
+| Saturday    | Age Group      | 25    | 24                 | 6               | 11.76%                        | 2.26%                                                |
+| Friday      | Age Group      | 45    | 35                 | 6               | 11.76%                        | 2.26%                                                |
+| Sunday      | Age Group      | 55    | 14                 | 4               | 7.84%                         | 1.51%                                                |
 
 #### Amount of reservations and online checkins by `nationality` per weekday:
 
-| created_day | dimension_type   | value | amount_of_reservations | amount_of_online_checkin | percentage_of_online_per_total_reservations |
-|-------------|------------------|-------|------------------------|--------------------------|---------------------------------------------|
-| Friday      | nationality_code | RU    | 9                      | 3                        | 1.59                                        |
-| Monday      | nationality_code | GB    | 42                     | 6                        | 3.17                                        |
-| Saturday    | nationality_code | US    | 29                     | 5                        | 2.65                                        |
-| Sunday      | nationality_code | GB    | 14                     | 2                        | 1.06                                        |
-| Thursday    | nationality_code | DE    | 28                     | 3                        | 1.59                                        |
-| Tuesday     | nationality_code | US    | 34                     | 5                        | 2.65                                        |
-| Wednesday   | nationality_code | US    | 33                     | 5                        | 2.65                                        |
+| Day of Week | Dimension Type | Value | Total Reservations | Online Checkins | Percentage of Online Checkins | Percentage of Online Checkins per Total Reservations |
+|-------------|----------------|-------|--------------------|-----------------|-------------------------------|------------------------------------------------------|
+| Monday      | Nationality    | GB    | 42                 | 6               | 20.69%                        | 3.17%                                                |
+| Wednesday   | Nationality    | US    | 33                 | 5               | 17.24%                        | 2.65%                                                |
+| Saturday    | Nationality    | US    | 29                 | 5               | 17.24%                        | 2.65%                                                |
+| Tuesday     | Nationality    | US    | 34                 | 5               | 17.24%                        | 2.65%                                                |
+| Friday      | Nationality    | RU    | 9                  | 3               | 10.34%                        | 1.59%                                                |
+| Thursday    | Nationality    | DE    | 28                 | 3               | 10.34%                        | 1.59%                                                |
+| Sunday      | Nationality    | GB    | 14                 | 2               | 6.90%                         | 1.06%                                                |
+
 
 
 ---
