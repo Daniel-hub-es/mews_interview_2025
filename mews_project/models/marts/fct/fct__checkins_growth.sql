@@ -86,7 +86,7 @@ with
             round(revenue_diff_per_stay, 2) as "Revenue Lift per Stay",
             round(online_adr, 2) as "Online Average Daily Rate",
             round(offline_adr, 2) as "Offline Average Daily Rate",
-            round(adr_diff) as "Average Daily Rate Difference",
+            round(adr_diff, 2) as "Average Daily Rate Difference",
             round(current_total_revenue, 2) as "Current Total Revenue",
             round(incremental_revenue_impact, 2) as "Projected Revenue Lift",
             round((incremental_revenue_impact / current_total_revenue) * 100, 2) || '%' as "Growth %",
