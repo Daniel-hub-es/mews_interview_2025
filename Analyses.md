@@ -28,7 +28,7 @@ The following [ad-hoc sql queries](./mews_project/analyses/key_question_one) sho
 | Fully Flexible  | male      | 239          | 59.45%                                  | 1295               | 9.56%                                             |
 | Early - 60 days | undefined | 76           | 18.91%                                  | 846                | 3.04%                                             |
 
-In the stacked bar chart below is represented the distribution of reservations according to popular rate type by guest gender
+In the stacked bar chart below is represented the distribution of reservations according to popular rate type by guest gender:
 
 <img width="1079" height="629" alt="image" src="https://github.com/user-attachments/assets/dae52e0f-a284-4157-bbbe-5cac7ceeff9e" />
 
@@ -89,6 +89,12 @@ Findings shows a clear segmentation in the product choice bewteen **Fully Flexib
 | Fully Flexible  | CN          | 11           | 2.41%                                   | 59                 | 0.44%                                             |
 
 ---
+
+In the stacked bar chart below is represented the distribution of reservations according to popular rate type by guest nationality:
+
+<img width="1023" height="595" alt="image" src="https://github.com/user-attachments/assets/3a0a6459-1347-4350-9b0a-6b9ea87d2f90" />
+
+
 
 ### 2) What are the typical guests who do online check-in? Is it somehow different when you compare reservations created across different weekdays (table `reservation`, `IsOnlineCheckin` column)?
 
