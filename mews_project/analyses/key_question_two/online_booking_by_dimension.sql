@@ -7,7 +7,7 @@ with
 
 	age_group as (
 		select
-	        'age_group' as dimension_type,
+	        'Age Group' as dimension_type,
 	        age_group::varchar as value,
 	        sum(total_reservations) as amount_of_reservations,
 	        sum(total_online_checkin) as amount_of_online_checkin
@@ -19,7 +19,7 @@ with
 
 	gender as (
 		select
-			'gender' as dimension_type,
+			'Gender' as dimension_type,
 	        case
 				when gender = 0
 				then 'undefined'
@@ -38,7 +38,7 @@ with
 
 	nationality as (
 		select
-	        'nationality_code' as dimension,
+	        'Nationality' as dimension,
 	        nationality_code::varchar as value,
 	        sum(total_reservations) as amount_of_reservations,
 	        sum(total_online_checkin) as amount_of_online_checkin
@@ -69,9 +69,22 @@ with
 			value,
 			amount_of_reservations,
 			amount_of_online_checkin,
+			round(100.0 * amount_of_online_checkin / sum(amount_of_online_checkin) over(),
+			2 ) as percentage_of_online_checkins,
 			round(100.0 * amount_of_online_checkin / sum(amount_of_reservations) over(),
 			2 ) as percentage_of_online_per_total_reservations
 		from gathered
+	),
+
+	final as (
+		select
+			dimension_type as "Dimension Type",
+			value as "Value",
+			amount_of_reservations as "Total Reservations",
+			amount_of_online_checkin as "Online Checkins",
+			cast(percentage_of_online_checkins as varchar) || '%' as "Percentage of Online Checkins",
+			cast(percentage_of_online_per_total_reservations as varchar) || '%' as "Percentage of Online Checkins per Total Reservations"
+		from final_calculations
 	)
 
-select * from final_calculations
+select * from final
