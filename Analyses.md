@@ -32,7 +32,7 @@ In the stacked bar chart below is represented the distribution of reservations a
 
 <img width="1079" height="629" alt="image" src="https://github.com/user-attachments/assets/dae52e0f-a284-4157-bbbe-5cac7ceeff9e" />
 
-Findings shows a clear segmentation in the product choice bewteen **Fully Flexible** and **Early - 60 days**.
+Findings shows a clear segmentation in the product choice bewteen **‘Fully Flexible’** and **Early - 60 days**.
 
 - The ‘Fully Flexible’ rate (in light blue) is the primary driver for both male and female segments.
 
@@ -40,7 +40,7 @@ Findings shows a clear segmentation in the product choice bewteen **Fully Flexib
 
   **Females** also show a high preference for flexibility, though their total volume is lower than the male segment, totaling  87 reservations.
 
-  Even though the “Fully Flexible” rate accounts for 81,09% of the most popular reservations by Gender, it only accounts for 13.04% of total reservations. 
+  Even though the ‘Fully Flexible’ rate accounts for 81,09% of the most popular reservations by Gender, it only accounts for 13.04% of total reservations. 
 
 - The **'undefined'** gender category are guests who prefer to engage in advanced planning and long-term booking security rather than short-term flexibility
 
@@ -63,13 +63,13 @@ In the scatter-plot below is represented the distribution of reservations accord
 
 <img width="1033" height="607" alt="image" src="https://github.com/user-attachments/assets/d7c85770-2ac9-4b03-946d-e32e7e0164c2" />
 
-Findings shows a clear segmentation in the product choice bewteen **Fully Flexible** and **Early - 21 days**.
+Findings shows a clear segmentation in the product choice bewteen **‘Fully Flexible’** and **Early - 21 days**.
 
 - The ‘Fully Flexible’ rate (in light blue) is the main volume driver, especially concentrated in the Age 0 or **Unkwnown age group**, suggesting that guests who do not specify age or travel in groups prioritize cancellation security.
   
   **The range between 25 and 55 age groups** are concentrated near to the center of the graph, generating an standarized distribution of customers for a constant cashflow, being the "core business" for the Hotel.
 
-  Although the “Fully Flexible” rate accounts for 99.13% of the most popular reservations by age group, it only accounts for 13.6% of total reservations by Age Group. 
+  Although the ‘Fully Flexible’ rate accounts for 99.13% of the most popular reservations by age group, it only accounts for 13.6% of total reservations by Age Group. 
 
 - The ‘Early - 21 days’ rate appears as an isolated point in the upper left corner **(Age more than 65)**. This indicates that advance planning is a residual behavior or linked to a very specific age segment in this data sample.
 
@@ -94,9 +94,21 @@ In the stacked bar chart below is represented the distribution of reservations a
 
 <img width="1023" height="595" alt="image" src="https://github.com/user-attachments/assets/3a0a6459-1347-4350-9b0a-6b9ea87d2f90" />
 
+- **The "Unknown" Data Gap**:
 
+  This category represents the single highest volume with  76 reservations and preference for ‘Early - 60 days’. The high prevalence of "Unknown" suggests a significant portion of guests whose profile data is missing or didn't wanted to give this type of data, a common insight to improve check-in data or to identify specific high-volume booking channels.
 
-### 2) What are the typical guests who do online check-in? Is it somehow different when you compare reservations created across different weekdays (table `reservation`, `IsOnlineCheckin` column)?
+- **Primary Identified Markets**:
+
+  - **Great Britain (GB)** prefers ‘Fully Flexible’ Rate reservation and is the leading identified nationality with 40 reservations in the table shown above, establishing it as the most important market.
+    
+  - **Germany (DE)** and the **United States (US)** follow as the next major tiers, both contributing 26 reservations each prefering ‘Fully Flexible’ Rate.
+
+Across the three dimensions we can assume that the preference for Booking Rates categories is **‘Fully Flexible’**. The data suggests that guests prioritize cancellation security and travel agility over the discounts of the "Early" rates.
+
+---
+
+### 1) What are the typical guests who do online check-in? Is it somehow different when you compare reservations created across different weekdays (table `reservation`, `IsOnlineCheckin` column)?
 
 For this analysis, we have created a fct table called `fct__online_checkins` from the intermediate model `int__reservations_rates` joining it with `dim__calendar` table be able to make the comparasion across different weekdays in the **mart layer**:
 
