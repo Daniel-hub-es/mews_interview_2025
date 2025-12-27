@@ -1,0 +1,8 @@
+"Day of Week","Dimension Type","Value","Total Reservations","Online Checkins","Percentage of Online Checkins","Percentage of Online Checkins per Total Reservations"
+"Monday","Age Group","35","51","11","21.57%","4.15%"
+"Thursday","Age Group","35","49","9","17.65%","3.40%"
+"Tuesday","Age Group","35","53","9","17.65%","3.40%"
+"Wednesday","Age Group","35","39","6","11.76%","2.26%"
+"Saturday","Age Group","25","24","6","11.76%","2.26%"
+"Friday","Age Group","45","35","6","11.76%","2.26%"
+"Sunday","Age Group","55","14","4","7.84%","1.51%"

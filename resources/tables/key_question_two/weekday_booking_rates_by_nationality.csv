@@ -1,0 +1,8 @@
+"Day of Week","Dimension Type","Value","Total Reservations","Online Checkins","Percentage of Online Checkins","Percentage of Online Checkins per Total Reservations"
+"Monday","Nationality","GB","42","6","20.69%","3.17%"
+"Wednesday","Nationality","US","33","5","17.24%","2.65%"
+"Saturday","Nationality","US","29","5","17.24%","2.65%"
+"Tuesday","Nationality","US","34","5","17.24%","2.65%"
+"Friday","Nationality","RU","9","3","10.34%","1.59%"
+"Thursday","Nationality","DE","28","3","10.34%","1.59%"
+"Sunday","Nationality","GB","14","2","6.90%","1.06%"
