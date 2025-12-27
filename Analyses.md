@@ -4,6 +4,8 @@ The following analysis was performed to answer the business key questions addres
 
 The content will be divided by the questions adressed.
 
+---
+
 ### 1) What are the popular choices of booking rates (table `rate`, columns `ShortRateName` or `RateName`) for different segments of customers (table `reservation`, columns `AgeGroup`, `Gender`, `NationalityCode`)?
 
 For this analysis, we have created a fct table called `fct__rate_popularity` from the intermediate model `int__reservations_rates` where we have joined the tables `rate` and `reservation` as a denormalization process to avoid multiple joins in the **mart** layer.
@@ -26,6 +28,25 @@ The following [ad-hoc sql queries](./mews_project/analyses/key_question_one) sho
 | Fully Flexible  | male      | 239          | 59.45%                                  | 1295               | 9.56%                                             |
 | Early - 60 days | undefined | 76           | 18.91%                                  | 846                | 3.04%                                             |
 
+In the stacked bar chart below is represented the distribution of reservations according to popular rate type by guest gender
+
+<img width="1079" height="629" alt="image" src="https://github.com/user-attachments/assets/dae52e0f-a284-4157-bbbe-5cac7ceeff9e" />
+
+Findings shows a clear segmentation in the product choice bewteen **Fully Flexible** and **Early - 60 days**.
+
+- The ‘Fully Flexible’ rate (in light blue) is the primary driver for both male and female segments.
+
+  **Males** represent the largest user base for this rate, significantly outperforming other categories with over 200 reservations.
+
+  **Females** also show a high preference for flexibility, though their total volume is lower than the male segment, totaling  87 reservations.
+
+  Even though the “Fully Flexible” rate accounts for 81,09% of the most popular reservations by Gender, it only accounts for 13.04% of total reservations. 
+
+- The **'undefined'** gender category are guests who prefer to engage in advanced planning and long-term booking security rather than short-term flexibility
+
+  While the male and female segments prioritize immediate flexibility, the 'undefined' segment represents a specific niche that drives the hotel’s long-term advanced-booking pipeline
+
+
 #### Popular booking rates by `age_group`:
 
 | Popular Rate    | Age Group | Reservations | Percentage of Popular Rate Reservations | Total Reservations | Percentage of Popular Rate per Total Reservations |
@@ -37,6 +58,20 @@ The following [ad-hoc sql queries](./mews_project/analyses/key_question_one) sho
 | Fully Flexible  | 55        | 43           | 12.54%                                  | 146                | 1.72%                                             |
 | Fully Flexible  | 65        | 14           | 4.08%                                   | 65                 | 0.56%                                             |
 | Early - 21 days | 100       | 3            | 0.87%                                   | 16                 | 0.12%                                             |
+
+In the scatter-plot below is represented the distribution of reservations according to popular rate type and guest age:
+
+<img width="1033" height="607" alt="image" src="https://github.com/user-attachments/assets/d7c85770-2ac9-4b03-946d-e32e7e0164c2" />
+
+Findings shows a clear segmentation in the product choice bewteen **Fully Flexible** and **Early - 21 days**.
+
+- The ‘Fully Flexible’ rate (in light blue) is the main volume driver, especially concentrated in the Age 0 or **Unkwnown age group**, suggesting that guests who do not specify age or travel in groups prioritize cancellation security.
+  
+  **The range between 25 and 55 age groups** are concentrated near to the center of the graph, generating an standarized distribution of customers for a constant cashflow, being the "core business" for the Hotel.
+
+  Although the “Fully Flexible” rate accounts for 99.13% of the most popular reservations by age group, it only accounts for 13.6% of total reservations by Age Group. 
+
+- The ‘Early - 21 days’ rate appears as an isolated point in the upper left corner **(Age more than 65)**. This indicates that advance planning is a residual behavior or linked to a very specific age segment in this data sample.
 
 #### Popular booking rates by `nationality` (limited to 10 records):
 
