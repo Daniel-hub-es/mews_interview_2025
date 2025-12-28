@@ -1,0 +1,4 @@
+"Gender","Total Reservations","Average Daily Rate","Average Length of Stay","Average Occupancy per Booking","Revenue per Space Unit","Profitability Rank"
+"undefined","846","165.051","2.7","4.3","155.743","MOST PROFITABLE"
+"male","1295","199.564","2.7","4.8","108.478","AVERAGE"
+"female","360","192.239","2.4","4.2","90.622","LEAST PROFITABLE"

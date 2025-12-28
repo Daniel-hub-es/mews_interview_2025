@@ -1,0 +1,8 @@
+"Age Group","Total Reservations","Average Daily Rate","Average Length of Stay","Average Occupancy per Booking","Revenue per Space Unit","Profitability Rank"
+0,"1520","183.704","2.8","4.8","144.872","MOST PROFITABLE"
+45,"241","210.000","2.4","4.2","96.661","AVERAGE"
+55,"146","213.200","2.4","4.3","94.161","AVERAGE"
+25,"234","189.088","2.3","3.9","87.431","AVERAGE"
+100,"16","167.961","2.6","4.3","87.170","AVERAGE"
+35,"279","189.165","2.3","3.9","82.918","AVERAGE"
+65,"65","126.777","3.2","4.4","59.445","LEAST PROFITABLE"
