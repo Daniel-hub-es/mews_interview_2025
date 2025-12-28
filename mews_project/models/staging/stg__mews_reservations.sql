@@ -24,7 +24,14 @@ with
             cast(nullif(trim("TravelAgency"), '') as varchar) as travel_agency,
             "IsOnlineCheckin"as is_online_checkin,
             cast(nullif(trim("NationalityCode"), '') as varchar) as nationality_code,
-            "Gender" as gender,
+            case
+				when "Gender" = 0
+				then 'undefined'
+				when "Gender" = 1
+				then 'male'
+				when "Gender" = 2
+				then 'female'
+			end as gender,
             "Classification" as classification,
             "AgeGroup" as age_group,
             "HasEmail" as has_email,
