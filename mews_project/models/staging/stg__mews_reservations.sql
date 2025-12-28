@@ -23,7 +23,11 @@ with
             "CommanderOrigin" as commander_origin,
             cast(nullif(trim("TravelAgency"), '') as varchar) as travel_agency,
             "IsOnlineCheckin"as is_online_checkin,
-            cast(nullif(trim("NationalityCode"), '') as varchar) as nationality_code,
+            case 
+                when cast(nullif(trim("NationalityCode"), '') as varchar) is NULL 
+                then 'Unknown' 
+                else cast(nullif(trim("NationalityCode"), '') as varchar) 
+            end as nationality_code,
             case
 				when "Gender" = 0
 				then 'undefined'
