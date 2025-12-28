@@ -238,12 +238,37 @@ limit 20;
 
 The following [ad-hoc sql queries](./mews_project/analyses/key_question_three) shows the most and least profitable general guest and most and least profitable guest by dimensions (`age_group`, `gender` and `nationality_code`). 
 
+The following metrics were calculated to identify the most and leat profitable guest:
+
+- Average Daily Rate (ADR): average price that a guest pay per night reservation
+
+$$\frac{\sum(\text{night cost sum})}{\sum(\text{night count})}$$
+
+- Average Lenght of Stay: average nights that a guest stay per reservation
+
+$$\frac{\sum(\text{night count})}{(\text{reservations}}$$
+
+- Average Occupancy per Booking: average occupancy of guests per room by reservation
+
+$$\frac{\sum(\text{guest count sum})}{(\text{reservations})}$$
+
+- Revenue per Space Unit: income by capacity unit avialable per room
+
+$$\frac{\sum(\text{night cost sum})}{\sum(\text{occupied space sum}))}$$
+
+The most and leas profitable guests were ranked based on Revenue Per Capacity Unit. This ensures the profitabily measured by efficiency of the resources rather than only the total volume. 
+
+The most profitable segments are those that fills the gap between high nightly rates and high occupancy density, while least profitable segments are characterized by low ADR that fail to justify the physical space allocated to the guest.
+
+
 #### Typical guesst that are most and least profitable:
 
 | Gender    | Age Group | Nationality Code | Total Reservations | Average Daily Rate | Average Length of Stay | Average Occupancy per Booking | Revenue per Space Unit | Profitability |
 |-----------|-----------|------------------|--------------------|--------------------|------------------------|-------------------------------|------------------------|---------------|
 | undefined | 0         | DE               | 55                 | 221.820            | 2.1                    | 2.9                           | 6377.323               | MOST          |
 | male      | 100       | SK               | 3                  | 26.679             | 2.3                    | 2.3                           | 13.339                 | LEAST         |
+
+With the data showed in the table above, we can identify generally that the most profitable guest is from Germany as que don't know the Age Group of the guest or the Gender. The ADR is the highest for this guest, maximizing space capacity while maintaining a high price ceiling.
 
 #### Typical guesst that are most and least profitable by `gender`:
 
@@ -252,6 +277,10 @@ The following [ad-hoc sql queries](./mews_project/analyses/key_question_three) s
 | undefined | 846                | 165.051            | 2.7                    | 4.3                           | 155.743                | MOST          |
 | female    | 360                | 192.239            | 2.4                    | 4.2                           | 90.622                 | LEAST         |
 
+The most profitable guest by gender is the "undefined" gender. While they pay a lower ADR, they lead in Revenue per Space Unit diven by the highest Average Occupancy Per Booking and the longest Stay. Sugest groups or families where profiles weren't captured.
+
+The most profitable guest by gender is the female gender. While this group pays higher ADR, they stay for shorter periods  and have slightly lower occupancy density.
+
 #### Typical guesst that are most and least profitable by `age`:
 
 | Age Group | Total Reservations | Average Daily Rate | Average Length of Stay | Average Occupancy per Booking | Revenue per Space Unit | Profitability |
@@ -259,12 +288,20 @@ The following [ad-hoc sql queries](./mews_project/analyses/key_question_three) s
 | 0         | 1520               | 183.704            | 2.8                    | 4.8                           | 144.872                | MOST          |
 | 65        | 65                 | 126.777            | 3.2                    | 4.4                           | 59.445                 | LEAST         |
 
+The "unknown" age group terpesent the primary source of business based on the amount of reservations and have the highest efficiency by Revenue per Space Space Unit. They pack rooms making square meters productive.
+
+The low segments are adults between 55 and 65, with a lower ADR. Their occupancy is still high but lowe compared to the other group. 
+
 #### Typical guesst that are most and least profitable by `nationality`:
 
 | Nationality Code | Total Reservations | Average Daily Rate | Average Length of Stay | Average Occupancy per Booking | Revenue per Space Unit | Profitability |
 |------------------|--------------------|--------------------|------------------------|-------------------------------|------------------------|---------------|
 | ID               | 7                  | 211.736            | 2.0                    | 3.1                           | 741.076                | MOST          |
 | AL               | 1                  | 73.227             | 3.0                    | 6.0                           | 36.613                 | LEAST         |
+
+The ID (Indonesia) segment got a very high ADR even if the lenght of stay is shorter, a small lucrative niche with with a high Revenue per Space Unit. 
+
+The AL (Albania) segment has a massive occupancy, and a long  Average Length of Stay, but it fails to be profitable, with a really low ADR. The Revenue per Space Unit is low, high occupancy cannot compensate for a weak Average Daily Rate, filling a room with 6 people at a low price is less efficient than filling it with 3 people at a premium price.
 
 ---
 
