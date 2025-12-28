@@ -256,7 +256,7 @@ $$\frac{\sum(\text{guest count sum})}{(\text{reservations})}$$
 
 $$\frac{\sum(\text{night cost sum})}{\sum(\text{occupied space sum}))}$$
 
-The most and leas profitable guests were ranked based on Revenue Per Capacity Unit. This ensures the profitabily measured by efficiency of the resources rather than only the total volume. 
+The most and leas profitable guests were ranked based on Revenue Per Space Unit. This ensures the profitabily measured by efficiency of the resources rather than only the total volume. 
 
 The most profitable segments are those that fills the gap between high nightly rates and high occupancy density, while least profitable segments are characterized by low ADR that fail to justify the physical space allocated to the guest.
 
