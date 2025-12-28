@@ -3,11 +3,7 @@ with
 	rates_nationality as (
 		select distinct on (nationality_code)
 			rate_name as popular_rate,
-			case
-				when nationality_code is NULL
-				then 'Unknown'
-				else nationality_code
-			end as nationality_code,
+			nationality_code,
 			sum(total_reservations) as popular_rate_reservations,
 			sum(
 				sum(total_reservations)) over(

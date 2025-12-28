@@ -3,14 +3,7 @@ with
 	rates_gender as (
 		select distinct on (gender)
 			rate_name as popular_rate,
-			case
-				when gender = 0
-				then 'undefined'
-				when gender = 1
-				then 'male'
-				when gender = 2
-				then 'female'
-			end as gender,
+			gender,
 			sum(total_reservations) as popular_rate_reservations,
 			sum(
 				sum(total_reservations)) over(

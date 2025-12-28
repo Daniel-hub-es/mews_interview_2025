@@ -3,14 +3,7 @@ with
     guest as (
         select 
             age_group,
-            case
-                when gender = 0
-                then 'undefined'
-                when gender = 1
-                then 'male'
-                when gender = 2
-                then 'female'
-            end as gender,
+            gender,
             nationality_code,
             sum(total_online_checkin) as amount_of_online_checkin
         from fct__online_checkins

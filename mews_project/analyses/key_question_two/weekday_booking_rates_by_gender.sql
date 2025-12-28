@@ -4,14 +4,7 @@ with
 		select distinct on (created_day)
 		    created_day,
 		    'Gender' as dimension_type,
-		    case
-		        when gender = 0
-		        then 'undefined'
-		        when gender = 1
-		        then 'male'
-		        when gender = 2
-		        then 'female'
-			end as value,
+		    gender as value,
 		    sum(total_reservations) as amount_of_reservations,
 		    sum(total_online_checkin) as amount_of_online_checkin
 		from fct__online_checkins
