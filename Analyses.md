@@ -331,3 +331,8 @@ The data presented gives significant performance gap between guest who do checki
 The resullts suggest that the digital users are higher spending profiles.
 
 The table calculates a financial benefit of increasing the digital adoption. If the amount of online guests is doubled, the stablishment would see an increase of 17,438.20$, a 1,41% increase of the total revenue. In rounded numbers, the business could increase the total revenue from $1,236M to $1,253M. 
+
+---
+
+The related Power Bi presentations is in the following path: [mews_interview_2025/resources
+/pbi](https://github.com/Daniel-hub-es/mews_interview_2025/tree/main/resources/pbi)
