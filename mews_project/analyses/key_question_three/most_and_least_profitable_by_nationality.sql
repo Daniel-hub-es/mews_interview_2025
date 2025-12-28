@@ -1,11 +1,7 @@
 with 
     segment_metrics as (
         select
-            case 
-				when nationality_code is null 
-				then 'Unknown'
-				else nationality_code
-			end as nationality_code,
+            nationality_code,
             count(*) as total_reservations,
             sum(night_cost_sum) as total_rev,
             sum(night_count) as total_nights,

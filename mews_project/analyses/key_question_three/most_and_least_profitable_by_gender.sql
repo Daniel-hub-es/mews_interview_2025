@@ -1,11 +1,7 @@
 with 
     segment_metrics as (
         select 
-            case
-                when gender = 0 then 'undefined'
-                when gender = 1 then 'male'
-                when gender = 2 then 'female'
-            end as gender,
+            gender,
             count(*) as total_reservations,
             sum(night_cost_sum) as total_rev,
             sum(night_count) as total_nights,
