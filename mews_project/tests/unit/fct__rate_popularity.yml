@@ -1,0 +1,29 @@
+unit_tests:
+  - name: test_rate_popularity_aggregation
+    model: fct__rate_popularity
+    description: "Verifies date extraction correctly aggregate by dimension."
+    given:
+      - input: ref('int__reservations_rates')
+        rows:
+          - {
+              created_utc: '2024-01-15 10:00:00', 
+              start_utc: '2024-02-01 12:00:00' 
+            }
+          - {
+              created_utc: '2024-02-20 15:00:00', 
+              start_utc: '2024-02-10 12:00:00'
+            }
+    expect:
+      rows:
+        - {
+            created_year_reservation: 2024, 
+            created_month_reservation: 1, 
+            start_year_reservation: 2024, 
+            start_month_reservation: 2
+          }
+        - {
+            created_year_reservation: 2024, 
+            created_month_reservation: 2, 
+            start_year_reservation: 2024, 
+            start_month_reservation: 2
+          }

@@ -1,0 +1,39 @@
+unit_tests:
+  - name: test_join_logic_and_sum_online_checkins
+    model: fct__online_checkins
+    description: "Verifies the join with calendar and sum of online check-ins."
+    given:
+      - input: ref('int__reservations_rates')
+        rows:
+          - {
+              created_utc: '2024-01-01 10:00:00', 
+              is_online_checkin: 1
+            }
+          - {
+              created_utc: '2024-01-01 10:00:00', 
+              is_online_checkin: 0
+            }
+          - {
+              created_utc: '2024-01-02 10:00:00', 
+              is_online_checkin: 1
+            }
+
+      - input: ref('dim__calendar')
+        rows:
+          - {dates: '2024-01-01', weekday: 'Monday'}
+          - {dates: '2024-01-02', weekday: 'Tuesday'}
+
+    expect:
+      rows:
+        - {
+            created_utc: '2024-01-01 10:00:00',
+            created_day: 'Monday',
+            total_reservations: 2,
+            total_online_checkin: 1
+          }
+        - {
+            created_utc: '2024-01-02 10:00:00',
+            created_day: 'Tuesday',
+            total_reservations: 1,
+            total_online_checkin: 1
+          }

@@ -1,0 +1,24 @@
+unit_tests:
+  - name: test_rev_per_capacity_calculation
+    model: fct__revenue 
+    description: "Verifies the revenue normalization logic and zero-division handling"
+    given:
+      - input: ref('int__reservations_rates')
+        rows:
+          - {
+              night_cost_sum: 100, 
+              occupied_space_sum: 2
+            }
+          - {
+              night_cost_sum: 100, 
+              occupied_space_sum: 1, 
+            }
+          - {
+              night_cost_sum: 50, 
+              occupied_space_sum: 0, 
+            }
+    expect:
+      rows:
+        - {rev_per_capacity: 100.00}
+        - {rev_per_capacity: 50.00}
+        - {rev_per_capacity: 0.00}
