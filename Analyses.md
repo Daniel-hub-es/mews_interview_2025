@@ -322,7 +322,7 @@ The following table shows the difference between the average online revenue and 
 |----------------|-----------------|-----------------------|------------------------|-----------------------|---------------------------|----------------------------|-------------------------------|-----------------------|------------------------|----------|-------------------------|
 | 2501           | 148             | 605.22                | 487.39                 | 117.83                | 230.86                    | 183.85                     | 47.01                         | 1236401.22            | 17438.29               | 1.41%    | 1253839.52              |
 
-The data presented gives significant performance gap between guest who do checkin online versus who do so offline.
+The table calculates a financial benefit of increasing the digital adoption. The data presented gives significant performance gap between guest who do checkin online versus who do so offline.
 
 - The Revenue Lift Per Stay shows 117.83$ more per stay than the offline guests (605,22$ vs 487,39$).
 
@@ -330,7 +330,9 @@ The data presented gives significant performance gap between guest who do checki
 
 The resullts suggest that the digital users are higher spending profiles.
 
-The table calculates a financial benefit of increasing the digital adoption. If the amount of online guests is doubled, the stablishment would see an increase of 17,438.20$, a 1,41% increase of the total revenue. In rounded numbers, the business could increase the total revenue from $1,236M to $1,253M. 
+- If the amount of online guests is doubled, the stablishment would see an increase of 17,438.20$, a 1,41% increase of the total revenue.
+
+- In rounded numbers, the business could increase the total revenue from $1,236M to $1,253M. 
 
 ---
 
