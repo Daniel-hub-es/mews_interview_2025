@@ -70,14 +70,19 @@ with
 	),
 
 	final as (
-		select
-			dimension_type as "Dimension Type",
-			value as "Value",
-			amount_of_reservations as "Total Reservations",
-			amount_of_online_checkin as "Online Checkins",
-			cast(percentage_of_online_checkins as varchar) || '%' as "Percentage of Online Checkins",
-			cast(percentage_of_online_per_total_reservations as varchar) || '%' as "Percentage of Online Checkins per Total Reservations"
-		from final_calculations
-	)
+        select
+            dimension_type as "Dimension Type",
+            value as "Value",
+            amount_of_reservations as "Total Reservations",
+            amount_of_online_checkin as "Online Checkins",
+
+            {{ calculate_share('amount_of_online_checkin', 'sum(amount_of_online_checkin) over()') }} 
+                as "Percentage of Online Checkins",
+
+            {{ calculate_share('amount_of_online_checkin', 'sum(amount_of_reservations) over()') }} 
+                as "Percentage of Online Checkins per Total Reservations"
+        
+        from gathered
+    )
 
 select * from final
