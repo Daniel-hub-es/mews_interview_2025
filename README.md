@@ -36,6 +36,7 @@ The objective is to analyze and answer the questions from the Task provided usin
 - `/jupyter_notebooks`: Creation of auxiliar calendar table to show python usage.
 - `docker-compose.yml`: Orchestration for the PostgreSQL database and PgAdmin UI.
 - `requirements.txt`: Python dependencies for the notebook environment.
+- `resources`: tables, plots and Power Bi file.
 
 ---
 
