@@ -8,10 +8,10 @@ with
     final as (
     select
 		-- Year Date
-        extract(year from created_utc) as created_year_reservation,
-        extract(month from created_utc) as created_month_reservation,
-        extract(year from start_utc) as start_year_reservation,
-        extract(month from start_utc) as start_month_reservation,
+        extract(year from created_utc)::int as created_year_reservation,
+        extract(month from created_utc)::int as created_month_reservation,
+        extract(year from start_utc)::int as start_year_reservation,
+        extract(month from start_utc)::int as start_month_reservation,
         -- Dimensions
         rate_name, 
         age_group,

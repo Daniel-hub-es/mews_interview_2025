@@ -20,11 +20,11 @@ with
             guest_count_sum,
             -- Normalize the revenue by dividing the total cost by the capacity units used
             -- Case statements prevent divisions by zero
-            case 
+            round(case 
                 when occupied_space_sum > 0 
                     then night_cost_sum / occupied_space_sum 
                 else 0 
-            end as rev_per_capacity
+            end, 2)::decimal(16,2) as rev_per_capacity
 
         from base
         order by rev_per_capacity desc
