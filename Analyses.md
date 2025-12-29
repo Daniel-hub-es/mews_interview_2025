@@ -268,7 +268,7 @@ The most profitable segments are those that fills the gap between high nightly r
 | undefined | 0         | DE               | 55                 | 221.820            | 2.1                    | 2.9                           | 6377.323               | MOST          |
 | male      | 100       | SK               | 3                  | 26.679             | 2.3                    | 2.3                           | 13.339                 | LEAST         |
 
-With the data showed in the table above, we can identify generally that the most profitable guest is from Germany as que don't know the Age Group of the guest or the Gender. The ADR is the highest for this guest, maximizing space capacity while maintaining a high price ceiling.
+With the data showed in the table above, we can identify generally that the most profitable guest is from Germany as we don't know the Age Group of the guest or the Gender. The ADR is the highest for this guest, maximizing space capacity while maintaining a high price ceiling.
 
 #### Typical guesst that are most and least profitable by `gender`:
 
