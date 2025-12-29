@@ -1,0 +1,33 @@
+unit_tests:
+  - name: test_online_impact_calculations
+    model: fct__checkins_growth
+    description: "Verifies the pivot logic and the revenue growth projections."
+    given:
+      - input: ref('int__reservations_rates')
+        rows:
+          - {
+              is_online_checkin: 0, 
+              night_cost_sum: 100, 
+              night_count: 2
+            }
+          - {
+              is_online_checkin: 1, 
+              night_cost_sum: 200, 
+              night_count: 2
+            }
+    expect:
+      rows:
+        - {
+            "Total Bookings": 2,
+            "Online Bookings": 1,
+            "Avg Online Total Stay": "200.00",
+            "Avg Offline Total Stay": "100.00",
+            "Revenue Lift per Stay": "100.00",
+            "Online Average Daily Rate": "100.00",
+            "Offline Average Daily Rate": "50.00",
+            "Average Daily Rate Difference": "50.00",
+            "Current Total Revenue": "300.00",
+            "Projected Revenue Lift": "100.00",
+            "Growth %": "33.33%",
+            "Projected Total Revenue": "400.00"
+          }
