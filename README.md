@@ -30,6 +30,7 @@ The objective is to analyze and answer the questions from the Task provided usin
 ## 📂 Repository Structure
 
 - `/mews_project`: The core dbt project.
+  - `analyses`: SQL logic to answer business questions.
   - `models/staging`: Data cleaning, renaming, and casting.
   - `models/intermediate`: Joins and temporal logic (denormalization of the data tables provided).
   - `models/marts`: Final Fact and Dimension tables to answer task questions.
