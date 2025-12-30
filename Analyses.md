@@ -162,7 +162,7 @@ If we consider the dimensions separately, the result is similar:
 | Thursday    | Gender         | male  | 228                | 18              | 15.13%                        | 1.39%                                                |
 | Friday      | Gender         | male  | 163                | 15              | 12.61%                        | 1.16%                                                |
 | Saturday    | Gender         | male  | 122                | 14              | 11.76%                        | 1.08%                                                |
-| Sunday      | Gender         | male  | 115                | 12              | 10.08%                        | 0.93%                                                ç
+| Sunday      | Gender         | male  | 115                | 12              | 10.08%                        | 0.93%                                                |
 
 In the stacked bar chart below is represented the distribution of the guest who do more online checkins online checkins per weekday by the gender of the guest:
 
